@@ -1,0 +1,16 @@
+#!/bin/sh
+# Gitea s6 service
+
+export HOME=/config
+export GITEA_WORK_DIR=/config
+export GITEA_CUSTOM=/config/custom
+export STATIC_ROOT_PATH=/usr/local/share/gitea
+
+cd /config
+# Fix for Git hooks
+ln -sf /bin/sh /bin/bash
+
+# Fix directory permissions (image build bug)
+chmod 755 /usr/local/sbin 2>/dev/null || true
+
+exec /usr/local/bin/s6-setuidgid bsd /usr/local/sbin/gitea web --config /config/custom/conf/app.ini
