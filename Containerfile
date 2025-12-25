@@ -6,22 +6,27 @@ ARG BASE_VERSION=15
 FROM ghcr.io/daemonless/base:${BASE_VERSION}
 
 ARG FREEBSD_ARCH=amd64
+ARG PACKAGES="gitea"
+
 LABEL org.opencontainers.image.title="gitea" \
-      org.opencontainers.image.description="Gitea self-hosted Git service on FreeBSD" \
-      org.opencontainers.image.source="https://github.com/daemonless/gitea" \
-      org.opencontainers.image.url="https://about.gitea.com/" \
-      org.opencontainers.image.documentation="https://docs.gitea.com/" \
-      org.opencontainers.image.licenses="MIT" \
-      org.opencontainers.image.vendor="daemonless" \
-      org.opencontainers.image.authors="daemonless" \
-      io.daemonless.port="3000" \
-      io.daemonless.arch="${FREEBSD_ARCH}" \
-      io.daemonless.config-mount="/config" \
-      io.daemonless.pkg-source="containerfile"
+    org.opencontainers.image.description="Gitea self-hosted Git service on FreeBSD" \
+    org.opencontainers.image.source="https://github.com/daemonless/gitea" \
+    org.opencontainers.image.url="https://about.gitea.com/" \
+    org.opencontainers.image.documentation="https://docs.gitea.com/" \
+    org.opencontainers.image.licenses="MIT" \
+    org.opencontainers.image.vendor="daemonless" \
+    org.opencontainers.image.authors="daemonless" \
+    io.daemonless.port="3000" \
+    io.daemonless.arch="${FREEBSD_ARCH}" \
+    io.daemonless.config-mount="/config" \
+    io.daemonless.pkg-source="containerfile" \
+    io.daemonless.category="Infrastructure" \
+    io.daemonless.upstream-mode="pkg" \
+    io.daemonless.packages="${PACKAGES}"
 
 # Install Gitea from FreeBSD packages (pkg handles all dependencies)
 RUN pkg update && \
-    pkg install -y gitea && \
+    pkg install -y ${PACKAGES} && \
     pkg clean -ay && \
     rm -rf /var/cache/pkg/* /var/db/pkg/repos/*
 
