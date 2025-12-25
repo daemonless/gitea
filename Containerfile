@@ -8,7 +8,7 @@ FROM ghcr.io/daemonless/base:${BASE_VERSION}
 ARG FREEBSD_ARCH=amd64
 ARG PACKAGES="gitea"
 
-LABEL org.opencontainers.image.title="gitea" \
+LABEL org.opencontainers.image.title="Gitea" \
     org.opencontainers.image.description="Gitea self-hosted Git service on FreeBSD" \
     org.opencontainers.image.source="https://github.com/daemonless/gitea" \
     org.opencontainers.image.url="https://about.gitea.com/" \
