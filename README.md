@@ -24,10 +24,9 @@ This image uses `s6-log` for internal log rotation.
 
 ```bash
 podman run -d --name gitea \
-  --network none \
-  --annotation 'org.freebsd.jail.vnet=new' \
-  -v /containers/gitea:/gitea \
-  --restart unless-stopped \
+  -p 3000:3000 -p 2222:22 \
+  -e PUID=1000 -e PGID=1000 \
+  -v /data/gitea:/gitea \
   ghcr.io/daemonless/gitea:latest
 ```
 
@@ -40,16 +39,51 @@ services:
   gitea:
     image: ghcr.io/daemonless/gitea:latest
     container_name: gitea
-    annotations:
-      org.freebsd.jail.vnet: "new"
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=America/New_York
     volumes:
       - /data/gitea:/gitea
+    ports:
+      - 3000:3000
+      - 2222:22
     restart: unless-stopped
 ```
+
+## Ansible
+
+```yaml
+- name: Deploy Gitea
+  containers.podman.podman_container:
+    name: gitea
+    image: ghcr.io/daemonless/gitea:latest
+    state: started
+    restart_policy: unless-stopped
+    env:
+      PUID: "1000"
+      PGID: "1000"
+      TZ: "America/New_York"
+    ports:
+      - "3000:3000"
+      - "2222:22"
+    volumes:
+      - /data/gitea:/gitea
+```
+
+## Advanced: VNET Networking
+
+For full isolation, you can use VNET. This gives the jail its own network stack, but requires manual IP configuration or a custom bridge setup.
+
+```bash
+podman run -d --name gitea \
+  --network none \
+  --annotation 'org.freebsd.jail.vnet=new' \
+  -v /containers/gitea:/gitea \
+  ghcr.io/daemonless/gitea:latest
+```
+
+**Note**: With `network=none` and `vnet=new`, the container will not have network connectivity until you assign an interface (epair) and IP address to it manually via `ifconfig` from the host.
 
 ## Tags
 
@@ -91,7 +125,7 @@ services:
 - **Base:** Built on `ghcr.io/daemonless/base-image` (FreeBSD)
 
 ### Specific Requirements
-- **VNET Required:** Must use `--annotation 'org.freebsd.jail.vnet=new'` due to complex networking needs.
+- **VNET Optional:** Can use `--annotation 'org.freebsd.jail.vnet=new'` for isolation, but standard bridge networking works out of the box.
 
 ## Links
 
