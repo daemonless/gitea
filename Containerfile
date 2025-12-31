@@ -7,6 +7,8 @@ FROM ghcr.io/daemonless/base:${BASE_VERSION}
 
 ARG FREEBSD_ARCH=amd64
 ARG PACKAGES="gitea"
+ARG UPSTREAM_URL="https://api.github.com/repos/go-gitea/gitea/releases/latest"
+ARG UPSTREAM_JQ=".tag_name"
 
 LABEL org.opencontainers.image.title="Gitea" \
     org.opencontainers.image.description="Gitea self-hosted Git service on FreeBSD" \
@@ -21,6 +23,8 @@ LABEL org.opencontainers.image.title="Gitea" \
     io.daemonless.config-mount="/config" \
     io.daemonless.pkg-source="containerfile" \
     io.daemonless.category="Infrastructure" \
+    io.daemonless.upstream-url="${UPSTREAM_URL}" \
+    io.daemonless.upstream-jq="${UPSTREAM_JQ}" \
     io.daemonless.packages="${PACKAGES}"
 
 # Install Gitea from FreeBSD packages (pkg handles all dependencies)
