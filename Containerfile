@@ -21,7 +21,6 @@ LABEL org.opencontainers.image.title="Gitea" \
     io.daemonless.config-mount="/config" \
     io.daemonless.pkg-source="containerfile" \
     io.daemonless.category="Infrastructure" \
-    io.daemonless.upstream-mode="pkg" \
     io.daemonless.packages="${PACKAGES}"
 
 # Install Gitea from FreeBSD packages (pkg handles all dependencies)
