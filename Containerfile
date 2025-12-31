@@ -9,6 +9,9 @@ ARG FREEBSD_ARCH=amd64
 ARG PACKAGES="gitea"
 ARG UPSTREAM_URL="https://api.github.com/repos/go-gitea/gitea/releases/latest"
 ARG UPSTREAM_JQ=".tag_name"
+ARG HEALTHCHECK_ENDPOINT="http://localhost:3000/api/healthz"
+
+ENV HEALTHCHECK_URL="${HEALTHCHECK_ENDPOINT}"
 
 LABEL org.opencontainers.image.title="Gitea" \
     org.opencontainers.image.description="Gitea self-hosted Git service on FreeBSD" \
@@ -25,6 +28,7 @@ LABEL org.opencontainers.image.title="Gitea" \
     io.daemonless.category="Infrastructure" \
     io.daemonless.upstream-url="${UPSTREAM_URL}" \
     io.daemonless.upstream-jq="${UPSTREAM_JQ}" \
+    io.daemonless.healthcheck-url="${HEALTHCHECK_ENDPOINT}" \
     io.daemonless.packages="${PACKAGES}"
 
 # Install Gitea from FreeBSD packages (pkg handles all dependencies)
