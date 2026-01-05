@@ -2,31 +2,32 @@
 # Initialize Gitea configuration
 
 # Ensure directories exist and have correct permissions
-mkdir -p /gitea/data /gitea/custom/conf /gitea/repos /gitea/log /gitea/lfs /gitea/tmp /gitea/bin
-chown -R bsd:bsd /gitea
+mkdir -p /config/data /config/custom/conf /config/repos /config/log /config/lfs /config/tmp /config/bin
+chown -R bsd:bsd /config
 
 # Copy gitea binary to volume (workaround for Podman overlay filesystem setuid issue)
 # s6-setuidgid can't exec binaries from overlay fs when dropping privileges
-if [ ! -f /gitea/bin/gitea ] || [ /usr/local/sbin/gitea -nt /gitea/bin/gitea ]; then
+if [ ! -f /config/bin/gitea ] || [ /usr/local/sbin/gitea -nt /config/bin/gitea ]; then
     echo "Copying gitea binary to volume..."
-    cp /usr/local/sbin/gitea /gitea/bin/gitea
-    chmod 755 /gitea/bin/gitea
-    chown bsd:bsd /gitea/bin/gitea
+    cp /usr/local/sbin/gitea /config/bin/gitea
+    chmod 755 /config/bin/gitea
+    chown bsd:bsd /config/bin/gitea
 fi
 
 # If no config exists, create a minimal one
-if [ ! -f /gitea/custom/conf/app.ini ]; then
-    cat > /gitea/custom/conf/app.ini << 'EOF'
+if [ ! -f /config/custom/conf/app.ini ]; then
+    cat > /config/custom/conf/app.ini << 'EOF'
 APP_NAME = Gitea: Git with a cup of tea
-RUN_USER = git
-WORK_PATH = /gitea
+RUN_USER = bsd
+WORK_PATH = /config
 RUN_MODE = prod
 
 [repository]
-ROOT = /gitea/repos
+ROOT = /config/repos
 
 [server]
-APP_DATA_PATH = /gitea/data
+APP_DATA_PATH = /config/data
+STATIC_ROOT_PATH = /usr/local/share/gitea
 DOMAIN = localhost
 HTTP_PORT = 3000
 ROOT_URL = http://localhost:3000/
@@ -37,11 +38,11 @@ LFS_START_SERVER = true
 OFFLINE_MODE = true
 
 [database]
-PATH = /gitea/data/gitea.db
+PATH = /config/data/gitea.db
 DB_TYPE = sqlite3
 
 [log]
-ROOT_PATH = /gitea/log
+ROOT_PATH = /config/log
 MODE = console,file
 LEVEL = info
 
@@ -49,7 +50,7 @@ LEVEL = info
 INSTALL_LOCK = false
 
 [lfs]
-PATH = /gitea/lfs
+PATH = /config/lfs
 
 [mailer]
 ENABLED = false
@@ -57,6 +58,6 @@ ENABLED = false
 [cron.update_checker]
 ENABLED = false
 EOF
-    chown bsd:bsd /gitea/custom/conf/app.ini
+    chown bsd:bsd /config/custom/conf/app.ini
     echo "Created default app.ini - run initial setup at http://localhost:3000/"
 fi
