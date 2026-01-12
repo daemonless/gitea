@@ -1,0 +1,42 @@
+name: gitea
+
+x-daemonless:
+  title: "Gitea"
+  icon: ":simple-gitea:"
+  category: "Infrastructure"
+  description: "Gitea self-hosted Git service on FreeBSD."
+  upstream_url: "https://github.com/go-gitea/gitea"
+  web_url: "https://about.gitea.com/"
+  freshports_url: "https://www.freshports.org/www/gitea/"
+  user: "bsd"
+  mlock: false
+  upstream_binary: false
+  
+  docs:
+    env:
+      PUID: "User ID for the application process"
+      PGID: "Group ID for the application process"
+      TZ: "Timezone for the container"
+    volumes:
+      /config: "Configuration, repositories, and data directory"
+    ports:
+      3000: "Web UI"
+      22: "SSH port"
+
+services:
+  gitea:
+    image: ghcr.io/daemonless/gitea:latest
+    container_name: gitea
+    restart: unless-stopped
+    
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+
+    volumes:
+      - /path/to/containers/gitea:/config
+
+    ports:
+      - "3000:3000"
+      - "2222:22"
