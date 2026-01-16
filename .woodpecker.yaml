@@ -1,8 +1,6 @@
-# Woodpecker CI configuration
-# Fetches centralized build script from daemonless/daemonless
-
+# Woodpecker CI configuration (Simplified)
 steps:
-  - name: build-latest
+  - name: build
     image: /bin/sh
     environment:
       GITHUB_TOKEN:
@@ -10,23 +8,12 @@ steps:
       GITHUB_ACTOR:
         from_secret: GITHUB_USER
     commands:
-      - |
-        mkdir -p scripts
-        fetch -qo scripts/build.sh \
-          "https://raw.githubusercontent.com/daemonless/daemonless/build-v1.1.1/scripts/build.sh"
-        chmod +x scripts/build.sh
-        ./scripts/build.sh \
-          --doas \
-          --registry ghcr.io \
-          --image ghcr.io/daemonless/gitea \
-          --tag latest \
-          --tag-version \
-          --skip-wip \
-          --login --push
+      - fetch -qo woodpecker-build.sh "https://raw.githubusercontent.com/daemonless/daemonless/main/scripts/woodpecker-build.sh"
+      - sh woodpecker-build.sh gitea
 
 when:
   - event: push
     branch: main
     path:
-      exclude: [ "*.md", "docs/**", "LICENSE", ".gitignore" ]
+      exclude: ["*.md", "docs/**", "LICENSE", ".gitignore"]
   - event: manual
