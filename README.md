@@ -11,6 +11,7 @@ Gitea self-hosted Git service on FreeBSD.
 |---|---|
 | **Port** | 3000 |
 | **Registry** | `ghcr.io/daemonless/gitea` |
+| **Docs** | [daemonless.io/images/gitea](https://daemonless.io/images/gitea/) |
 | **Source** | [https://github.com/go-gitea/gitea](https://github.com/go-gitea/gitea) |
 | **Website** | [https://about.gitea.com/](https://about.gitea.com/) |
 
