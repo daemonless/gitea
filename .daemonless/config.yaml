@@ -1,1 +1,12 @@
 icon: ':simple-gitea:'
+
+build:
+  variants:
+    - tag: pkg
+      containerfile: Containerfile.pkg
+      aliases: ["latest"]
+      default: true
+    - tag: pkg-latest
+      containerfile: Containerfile.pkg
+      args:
+        BASE_VERSION: "15-latest"
