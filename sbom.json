@@ -1,1368 +1,12 @@
 {
   "image": "gitea",
-  "generated": "2026-02-06T00:06:48Z",
+  "generated": "2026-02-13T12:11:39Z",
   "tags": {
-    "pkg-latest": {
-      "arch": "amd64",
-      "app_version": "1.24.2_8",
-      "source": "freebsd-latest",
-      "generated": "2026-02-05T23:53:28Z",
-      "packages": {
-        "freebsd": [
-          {
-            "name": "FreeBSD-audit-lib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-blocklist",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-bzip2-lib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-certctl",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-clibs",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-ctf-lib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-fetch",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-kerberos-lib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-libarchive",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-libbsdstat",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-libcasper",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-libexecinfo",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-libldns",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-libmagic",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-libucl",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-mtree",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-ncurses-lib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-openssl",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-openssl-lib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-pkg-bootstrap",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-rc",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-runtime",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-tcpd",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-ufs-lib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-utilities",
-            "version": "15.0p1"
-          },
-          {
-            "name": "FreeBSD-xz-lib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-zfs-lib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-zlib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-zoneinfo",
-            "version": "15.0"
-          },
-          {
-            "name": "brotli",
-            "version": "1.2.0,1"
-          },
-          {
-            "name": "curl",
-            "version": "8.17.0"
-          },
-          {
-            "name": "execline",
-            "version": "2.9.7.0"
-          },
-          {
-            "name": "expat",
-            "version": "2.7.3"
-          },
-          {
-            "name": "gettext-runtime",
-            "version": "0.26"
-          },
-          {
-            "name": "git",
-            "version": "2.52.0"
-          },
-          {
-            "name": "git-lfs",
-            "version": "3.6.1_12"
-          },
-          {
-            "name": "gitea",
-            "version": "1.24.2_8"
-          },
-          {
-            "name": "indexinfo",
-            "version": "0.3.1_1"
-          },
-          {
-            "name": "jq",
-            "version": "1.8.1"
-          },
-          {
-            "name": "libffi",
-            "version": "3.5.1"
-          },
-          {
-            "name": "libidn2",
-            "version": "2.3.8"
-          },
-          {
-            "name": "libnghttp2",
-            "version": "1.68.0"
-          },
-          {
-            "name": "libpsl",
-            "version": "0.21.5_2"
-          },
-          {
-            "name": "libssh2",
-            "version": "1.11.1,3"
-          },
-          {
-            "name": "libunistring",
-            "version": "1.4.1"
-          },
-          {
-            "name": "mpdecimal",
-            "version": "4.0.1"
-          },
-          {
-            "name": "oniguruma",
-            "version": "6.9.10"
-          },
-          {
-            "name": "p5-Authen-SASL",
-            "version": "2.1900"
-          },
-          {
-            "name": "p5-Crypt-URandom",
-            "version": "0.54"
-          },
-          {
-            "name": "p5-Digest-HMAC",
-            "version": "1.05"
-          },
-          {
-            "name": "p5-Error",
-            "version": "0.17030"
-          },
-          {
-            "name": "p5-IO-Socket-SSL",
-            "version": "2.095"
-          },
-          {
-            "name": "p5-MIME-Base32",
-            "version": "1.303"
-          },
-          {
-            "name": "p5-MIME-Base64",
-            "version": "3.16"
-          },
-          {
-            "name": "p5-Mozilla-CA",
-            "version": "20250602"
-          },
-          {
-            "name": "p5-Net-SSLeay",
-            "version": "1.94"
-          },
-          {
-            "name": "p5-URI",
-            "version": "5.34"
-          },
-          {
-            "name": "pcre2",
-            "version": "10.47_1"
-          },
-          {
-            "name": "perl5",
-            "version": "5.42.0_1"
-          },
-          {
-            "name": "pkg",
-            "version": "2.5.1"
-          },
-          {
-            "name": "python311",
-            "version": "3.11.14_1"
-          },
-          {
-            "name": "readline",
-            "version": "8.3.3"
-          },
-          {
-            "name": "s6",
-            "version": "2.13.2.0"
-          },
-          {
-            "name": "s6-rc",
-            "version": "0.5.6.0"
-          },
-          {
-            "name": "skalibs",
-            "version": "2.14.4.0"
-          },
-          {
-            "name": "zstd",
-            "version": "1.5.7_1"
-          }
-        ],
-        "dotnet": [],
-        "python": [
-          {
-            "name": "example",
-            "version": "21.12"
-          }
-        ],
-        "node": [],
-        "go": [
-          {
-            "name": "cloud.google.com/go/compute/metadata",
-            "version": "v0.6.0"
-          },
-          {
-            "name": "code.gitea.io/actions-proto-go",
-            "version": "v0.4.1"
-          },
-          {
-            "name": "code.gitea.io/gitea",
-            "version": "1.24.2"
-          },
-          {
-            "name": "code.gitea.io/sdk/gitea",
-            "version": "v0.21.0"
-          },
-          {
-            "name": "codeberg.org/gusted/mcaptcha",
-            "version": "v0.0.0-20220723083913-4f3072e1d570"
-          },
-          {
-            "name": "connectrpc.com/connect",
-            "version": "v1.18.1"
-          },
-          {
-            "name": "dario.cat/mergo",
-            "version": "v1.0.1"
-          },
-          {
-            "name": "filippo.io/edwards25519",
-            "version": "v1.1.0"
-          },
-          {
-            "name": "gitea.com/gitea/act",
-            "version": "v0.261.4"
-          },
-          {
-            "name": "gitea.com/gitea/git-lfs-transfer",
-            "version": "v0.2.0"
-          },
-          {
-            "name": "gitea.com/gitea/go-xsd-duration",
-            "version": "v0.0.0-20220703122237-02e73435a078"
-          },
-          {
-            "name": "gitea.com/go-chi/binding",
-            "version": "v0.0.0-20240430071103-39a851e106ed"
-          },
-          {
-            "name": "gitea.com/go-chi/cache",
-            "version": "v0.2.1"
-          },
-          {
-            "name": "gitea.com/go-chi/captcha",
-            "version": "v0.0.0-20240315150714-fb487f629098"
-          },
-          {
-            "name": "gitea.com/go-chi/session",
-            "version": "v0.0.0-20240316035857-16768d98ec96"
-          },
-          {
-            "name": "gitea.com/lunny/dingtalk_webhook",
-            "version": "v0.0.0-20171025031554-e3534c89ef96"
-          },
-          {
-            "name": "gitea.com/lunny/levelqueue",
-            "version": "v0.4.2-0.20230414023320-3c0159fe0fe4"
-          },
-          {
-            "name": "github.com/42wim/httpsig",
-            "version": "v1.2.2"
-          },
-          {
-            "name": "github.com/42wim/sshsig",
-            "version": "v0.0.0-20240818000253-e3a6333df815"
-          },
-          {
-            "name": "github.com/6543/go-version",
-            "version": "v1.3.1"
-          },
-          {
-            "name": "github.com/Azure/azure-sdk-for-go/sdk/azcore",
-            "version": "v1.18.0"
-          },
-          {
-            "name": "github.com/Azure/azure-sdk-for-go/sdk/internal",
-            "version": "v1.11.1"
-          },
-          {
-            "name": "github.com/Azure/azure-sdk-for-go/sdk/storage/azblob",
-            "version": "v1.6.0"
-          },
-          {
-            "name": "github.com/Azure/go-ntlmssp",
-            "version": "v0.0.0-20221128193559-754e69321358"
-          },
-          {
-            "name": "github.com/DataDog/zstd",
-            "version": "v1.5.7"
-          },
-          {
-            "name": "github.com/ProtonMail/go-crypto",
-            "version": "v1.2.0"
-          },
-          {
-            "name": "github.com/RoaringBitmap/roaring/v2",
-            "version": "v2.4.5"
-          },
-          {
-            "name": "github.com/SaveTheRbtz/zstd-seekable-format-go/pkg",
-            "version": "v0.7.3"
-          },
-          {
-            "name": "github.com/alecthomas/chroma/v2",
-            "version": "v2.17.0"
-          },
-          {
-            "name": "github.com/anchore/archiver/v3",
-            "version": "v3.5.2"
-          },
-          {
-            "name": "github.com/andybalholm/brotli",
-            "version": "v1.1.1"
-          },
-          {
-            "name": "github.com/anmitsu/go-shlex",
-            "version": "v0.0.0-20200514113438-38f4b401e2be"
-          },
-          {
-            "name": "github.com/aws/aws-sdk-go-v2",
-            "version": "v1.36.3"
-          },
-          {
-            "name": "github.com/aws/aws-sdk-go-v2/credentials",
-            "version": "v1.17.67"
-          },
-          {
-            "name": "github.com/aws/aws-sdk-go-v2/internal/configsources",
-            "version": "v1.3.34"
-          },
-          {
-            "name": "github.com/aws/aws-sdk-go-v2/internal/endpoints/v2",
-            "version": "v2.6.34"
-          },
-          {
-            "name": "github.com/aws/aws-sdk-go-v2/service/codecommit",
-            "version": "v1.28.2"
-          },
-          {
-            "name": "github.com/aws/smithy-go",
-            "version": "v1.22.3"
-          },
-          {
-            "name": "github.com/aymerick/douceur",
-            "version": "v0.2.0"
-          },
-          {
-            "name": "github.com/beorn7/perks",
-            "version": "v1.0.1"
-          },
-          {
-            "name": "github.com/bits-and-blooms/bitset",
-            "version": "v1.22.0"
-          },
-          {
-            "name": "github.com/blakesmith/ar",
-            "version": "v0.0.0-20190502131153-809d4375e1fb"
-          },
-          {
-            "name": "github.com/blevesearch/bleve/v2",
-            "version": "v2.5.0"
-          },
-          {
-            "name": "github.com/blevesearch/bleve_index_api",
-            "version": "v1.2.8"
-          },
-          {
-            "name": "github.com/blevesearch/geo",
-            "version": "v0.2.0"
-          },
-          {
-            "name": "github.com/blevesearch/go-porterstemmer",
-            "version": "v1.0.3"
-          },
-          {
-            "name": "github.com/blevesearch/gtreap",
-            "version": "v0.1.1"
-          },
-          {
-            "name": "github.com/blevesearch/mmap-go",
-            "version": "v1.0.4"
-          },
-          {
-            "name": "github.com/blevesearch/scorch_segment_api/v2",
-            "version": "v2.3.10"
-          },
-          {
-            "name": "github.com/blevesearch/segment",
-            "version": "v0.9.1"
-          },
-          {
-            "name": "github.com/blevesearch/snowballstem",
-            "version": "v0.9.0"
-          },
-          {
-            "name": "github.com/blevesearch/upsidedown_store_api",
-            "version": "v1.0.2"
-          },
-          {
-            "name": "github.com/blevesearch/vellum",
-            "version": "v1.1.0"
-          },
-          {
-            "name": "github.com/blevesearch/zapx/v11",
-            "version": "v11.4.1"
-          },
-          {
-            "name": "github.com/blevesearch/zapx/v12",
-            "version": "v12.4.1"
-          },
-          {
-            "name": "github.com/blevesearch/zapx/v13",
-            "version": "v13.4.1"
-          },
-          {
-            "name": "github.com/blevesearch/zapx/v14",
-            "version": "v14.4.1"
-          },
-          {
-            "name": "github.com/blevesearch/zapx/v15",
-            "version": "v15.4.1"
-          },
-          {
-            "name": "github.com/blevesearch/zapx/v16",
-            "version": "v16.2.3"
-          },
-          {
-            "name": "github.com/bmatcuk/doublestar/v4",
-            "version": "v4.8.1"
-          },
-          {
-            "name": "github.com/bohde/codel",
-            "version": "v0.2.0"
-          },
-          {
-            "name": "github.com/boombuler/barcode",
-            "version": "v1.0.2"
-          },
-          {
-            "name": "github.com/bradfitz/gomemcache",
-            "version": "v0.0.0-20250403215159-8d39553ac7cf"
-          },
-          {
-            "name": "github.com/buildkite/terminal-to-html/v3",
-            "version": "v3.16.8"
-          },
-          {
-            "name": "github.com/caddyserver/certmagic",
-            "version": "v0.23.0"
-          },
-          {
-            "name": "github.com/caddyserver/zerossl",
-            "version": "v0.1.3"
-          },
-          {
-            "name": "github.com/cention-sany/utf7",
-            "version": "v0.0.0-20170124080048-26cad61bd60a"
-          },
-          {
-            "name": "github.com/cespare/xxhash/v2",
-            "version": "v2.3.0"
-          },
-          {
-            "name": "github.com/chi-middleware/proxy",
-            "version": "v1.1.1"
-          },
-          {
-            "name": "github.com/cloudflare/circl",
-            "version": "v1.6.1"
-          },
-          {
-            "name": "github.com/couchbase/go-couchbase",
-            "version": "v0.1.1"
-          },
-          {
-            "name": "github.com/couchbase/gomemcached",
-            "version": "v0.3.3"
-          },
-          {
-            "name": "github.com/couchbase/goutils",
-            "version": "v0.1.2"
-          },
-          {
-            "name": "github.com/cpuguy83/go-md2man/v2",
-            "version": "v2.0.6"
-          },
-          {
-            "name": "github.com/cyphar/filepath-securejoin",
-            "version": "v0.4.1"
-          },
-          {
-            "name": "github.com/davecgh/go-spew",
-            "version": "v1.1.2-0.20180830191138-d8f796af33cc"
-          },
-          {
-            "name": "github.com/dgryski/go-rendezvous",
-            "version": "v0.0.0-20200823014737-9f7001d12a5f"
-          },
-          {
-            "name": "github.com/dimiro1/reply",
-            "version": "v0.0.0-20200315094148-d0136a4c9e21"
-          },
-          {
-            "name": "github.com/djherbis/buffer",
-            "version": "v1.2.0"
-          },
-          {
-            "name": "github.com/djherbis/nio/v3",
-            "version": "v3.0.1"
-          },
-          {
-            "name": "github.com/dlclark/regexp2",
-            "version": "v1.11.5"
-          },
-          {
-            "name": "github.com/dpotapov/go-spnego",
-            "version": "v0.0.0-20210315154721-298b63a54430"
-          },
-          {
-            "name": "github.com/dsnet/compress",
-            "version": "v0.0.2-0.20210315054119-f66993602bf5"
-          },
-          {
-            "name": "github.com/dustin/go-humanize",
-            "version": "v1.0.1"
-          },
-          {
-            "name": "github.com/editorconfig/editorconfig-core-go/v2",
-            "version": "v2.6.3"
-          },
-          {
-            "name": "github.com/emersion/go-imap",
-            "version": "v1.2.1"
-          },
-          {
-            "name": "github.com/emersion/go-sasl",
-            "version": "v0.0.0-20241020182733-b788ff22d5a6"
-          },
-          {
-            "name": "github.com/emirpasic/gods",
-            "version": "v1.18.1"
-          },
-          {
-            "name": "github.com/ethantkoenig/rupture",
-            "version": "v1.0.1"
-          },
-          {
-            "name": "github.com/fatih/color",
-            "version": "v1.18.0"
-          },
-          {
-            "name": "github.com/felixge/fgprof",
-            "version": "v0.9.5"
-          },
-          {
-            "name": "github.com/fsnotify/fsnotify",
-            "version": "v1.9.0"
-          },
-          {
-            "name": "github.com/fxamacker/cbor/v2",
-            "version": "v2.8.0"
-          },
-          {
-            "name": "github.com/git-lfs/git-lfs/v3",
-            "version": null
-          },
-          {
-            "name": "github.com/git-lfs/gitobj/v2",
-            "version": "v2.1.1"
-          },
-          {
-            "name": "github.com/git-lfs/go-netrc",
-            "version": "v0.0.0-20210914205454-f0c862dd687a"
-          },
-          {
-            "name": "github.com/git-lfs/pktline",
-            "version": "v0.0.0-20210330133718-06e9096e2825"
-          },
-          {
-            "name": "github.com/git-lfs/wildmatch/v2",
-            "version": "v2.0.1"
-          },
-          {
-            "name": "github.com/gliderlabs/ssh",
-            "version": "v0.3.8"
-          },
-          {
-            "name": "github.com/go-ap/activitypub",
-            "version": "v0.0.0-20250409143848-7113328b1f3d"
-          },
-          {
-            "name": "github.com/go-ap/errors",
-            "version": "v0.0.0-20250409143711-5686c11ae650"
-          },
-          {
-            "name": "github.com/go-ap/jsonld",
-            "version": "v0.0.0-20221030091449-f2a191312c73"
-          },
-          {
-            "name": "github.com/go-asn1-ber/asn1-ber",
-            "version": "v1.5.8-0.20250403174932-29230038a667"
-          },
-          {
-            "name": "github.com/go-chi/chi/v5",
-            "version": "v5.2.2"
-          },
-          {
-            "name": "github.com/go-chi/cors",
-            "version": "v1.2.1"
-          },
-          {
-            "name": "github.com/go-co-op/gocron",
-            "version": "v1.37.0"
-          },
-          {
-            "name": "github.com/go-enry/go-enry/v2",
-            "version": "v2.9.2"
-          },
-          {
-            "name": "github.com/go-fed/httpsig",
-            "version": "v1.1.1-0.20201223112313-55836744818e"
-          },
-          {
-            "name": "github.com/go-git/gcfg",
-            "version": "v1.5.1-0.20230307220236-3a3c6141e376"
-          },
-          {
-            "name": "github.com/go-git/go-billy/v5",
-            "version": "v5.6.2"
-          },
-          {
-            "name": "github.com/go-git/go-git/v5",
-            "version": "v5.16.0"
-          },
-          {
-            "name": "github.com/go-ini/ini",
-            "version": "v1.67.0"
-          },
-          {
-            "name": "github.com/go-ldap/ldap/v3",
-            "version": "v3.4.11"
-          },
-          {
-            "name": "github.com/go-redsync/redsync/v4",
-            "version": "v4.13.0"
-          },
-          {
-            "name": "github.com/go-sql-driver/mysql",
-            "version": "v1.9.2"
-          },
-          {
-            "name": "github.com/go-webauthn/webauthn",
-            "version": "v0.12.3"
-          },
-          {
-            "name": "github.com/go-webauthn/x",
-            "version": "v0.1.20"
-          },
-          {
-            "name": "github.com/gobwas/glob",
-            "version": "v0.2.3"
-          },
-          {
-            "name": "github.com/goccy/go-json",
-            "version": "v0.10.5"
-          },
-          {
-            "name": "github.com/gogs/chardet",
-            "version": "v0.0.0-20211120154057-b7413eaefb8f"
-          },
-          {
-            "name": "github.com/gogs/go-gogs-client",
-            "version": "v0.0.0-20210131175652-1d7215cd8d85"
-          },
-          {
-            "name": "github.com/golang-jwt/jwt/v4",
-            "version": "v4.5.2"
-          },
-          {
-            "name": "github.com/golang-jwt/jwt/v5",
-            "version": "v5.2.2"
-          },
-          {
-            "name": "github.com/golang-sql/civil",
-            "version": "v0.0.0-20220223132316-b832511892a9"
-          },
-          {
-            "name": "github.com/golang-sql/sqlexp",
-            "version": "v0.1.0"
-          },
-          {
-            "name": "github.com/golang/groupcache",
-            "version": "v0.0.0-20241129210726-2c02b8208cf8"
-          },
-          {
-            "name": "github.com/golang/protobuf",
-            "version": "v1.5.4"
-          },
-          {
-            "name": "github.com/golang/snappy",
-            "version": "v1.0.0"
-          },
-          {
-            "name": "github.com/google/btree",
-            "version": "v1.1.3"
-          },
-          {
-            "name": "github.com/google/flatbuffers",
-            "version": "v25.2.10+incompatible"
-          },
-          {
-            "name": "github.com/google/go-github/v71",
-            "version": "v71.0.0"
-          },
-          {
-            "name": "github.com/google/go-querystring",
-            "version": "v1.1.0"
-          },
-          {
-            "name": "github.com/google/go-tpm",
-            "version": "v0.9.3"
-          },
-          {
-            "name": "github.com/google/licenseclassifier/v2",
-            "version": "v2.0.0"
-          },
-          {
-            "name": "github.com/google/pprof",
-            "version": "v0.0.0-20250422154841-e1f9c1950416"
-          },
-          {
-            "name": "github.com/google/uuid",
-            "version": "v1.6.0"
-          },
-          {
-            "name": "github.com/gorilla/css",
-            "version": "v1.0.1"
-          },
-          {
-            "name": "github.com/gorilla/feeds",
-            "version": "v1.2.0"
-          },
-          {
-            "name": "github.com/gorilla/mux",
-            "version": "v1.8.1"
-          },
-          {
-            "name": "github.com/gorilla/securecookie",
-            "version": "v1.1.2"
-          },
-          {
-            "name": "github.com/gorilla/sessions",
-            "version": "v1.4.0"
-          },
-          {
-            "name": "github.com/hashicorp/errwrap",
-            "version": "v1.1.0"
-          },
-          {
-            "name": "github.com/hashicorp/go-cleanhttp",
-            "version": "v0.5.2"
-          },
-          {
-            "name": "github.com/hashicorp/go-multierror",
-            "version": "v1.1.1"
-          },
-          {
-            "name": "github.com/hashicorp/go-retryablehttp",
-            "version": "v0.7.7"
-          },
-          {
-            "name": "github.com/hashicorp/go-uuid",
-            "version": "v1.0.2"
-          },
-          {
-            "name": "github.com/hashicorp/golang-lru/v2",
-            "version": "v2.0.7"
-          },
-          {
-            "name": "github.com/huandu/xstrings",
-            "version": "v1.5.0"
-          },
-          {
-            "name": "github.com/jaytaylor/html2text",
-            "version": "v0.0.0-20230321000545-74c2419ad056"
-          },
-          {
-            "name": "github.com/jbenet/go-context",
-            "version": "v0.0.0-20150711004518-d14ea06fba99"
-          },
-          {
-            "name": "github.com/jcmturner/aescts/v2",
-            "version": "v2.0.0"
-          },
-          {
-            "name": "github.com/jcmturner/dnsutils/v2",
-            "version": "v2.0.0"
-          },
-          {
-            "name": "github.com/jcmturner/gofork",
-            "version": "v1.0.0"
-          },
-          {
-            "name": "github.com/jcmturner/goidentity/v6",
-            "version": "v6.0.1"
-          },
-          {
-            "name": "github.com/jcmturner/gokrb5/v8",
-            "version": "v8.4.2"
-          },
-          {
-            "name": "github.com/jcmturner/rpc/v2",
-            "version": "v2.0.3"
-          },
-          {
-            "name": "github.com/jhillyerd/enmime",
-            "version": "v1.3.0"
-          },
-          {
-            "name": "github.com/jmhodges/clock",
-            "version": "v1.2.0"
-          },
-          {
-            "name": "github.com/josharian/intern",
-            "version": "v1.0.0"
-          },
-          {
-            "name": "github.com/json-iterator/go",
-            "version": "v1.1.12"
-          },
-          {
-            "name": "github.com/kballard/go-shellquote",
-            "version": "v0.0.0-20180428030007-95032a82bc51"
-          },
-          {
-            "name": "github.com/kevinburke/ssh_config",
-            "version": "v1.2.0"
-          },
-          {
-            "name": "github.com/klauspost/compress",
-            "version": "v1.18.0"
-          },
-          {
-            "name": "github.com/klauspost/cpuid/v2",
-            "version": "v2.2.10"
-          },
-          {
-            "name": "github.com/klauspost/pgzip",
-            "version": "v1.2.6"
-          },
-          {
-            "name": "github.com/leonelquinteros/gotext",
-            "version": "v1.5.0"
-          },
-          {
-            "name": "github.com/lib/pq",
-            "version": "v1.10.9"
-          },
-          {
-            "name": "github.com/libdns/libdns",
-            "version": "v1.0.0-beta.1"
-          },
-          {
-            "name": "github.com/mailru/easyjson",
-            "version": "v0.9.0"
-          },
-          {
-            "name": "github.com/markbates/going",
-            "version": "v1.0.3"
-          },
-          {
-            "name": "github.com/markbates/goth",
-            "version": "v1.81.0"
-          },
-          {
-            "name": "github.com/mattn/go-colorable",
-            "version": "v0.1.14"
-          },
-          {
-            "name": "github.com/mattn/go-isatty",
-            "version": "v0.0.4"
-          },
-          {
-            "name": "github.com/mattn/go-runewidth",
-            "version": "v0.0.16"
-          },
-          {
-            "name": "github.com/mattn/go-shellwords",
-            "version": "v1.0.12"
-          },
-          {
-            "name": "github.com/mattn/go-sqlite3",
-            "version": "v1.14.28"
-          },
-          {
-            "name": "github.com/meilisearch/meilisearch-go",
-            "version": "v0.31.0"
-          },
-          {
-            "name": "github.com/mholt/acmez/v3",
-            "version": "v3.1.2"
-          },
-          {
-            "name": "github.com/microcosm-cc/bluemonday",
-            "version": "v1.0.27"
-          },
-          {
-            "name": "github.com/microsoft/go-mssqldb",
-            "version": "v1.8.0"
-          },
-          {
-            "name": "github.com/miekg/dns",
-            "version": "v1.1.65"
-          },
-          {
-            "name": "github.com/minio/crc64nvme",
-            "version": "v1.0.1"
-          },
-          {
-            "name": "github.com/minio/md5-simd",
-            "version": "v1.1.2"
-          },
-          {
-            "name": "github.com/minio/minio-go/v7",
-            "version": "v7.0.91"
-          },
-          {
-            "name": "github.com/mitchellh/mapstructure",
-            "version": "v1.5.0"
-          },
-          {
-            "name": "github.com/modern-go/concurrent",
-            "version": "v0.0.0-20180306012644-bacd9c7ef1dd"
-          },
-          {
-            "name": "github.com/modern-go/reflect2",
-            "version": "v1.0.2"
-          },
-          {
-            "name": "github.com/mrjones/oauth",
-            "version": "v0.0.0-20190623134757-126b35219450"
-          },
-          {
-            "name": "github.com/msteinert/pam",
-            "version": "v1.2.0"
-          },
-          {
-            "name": "github.com/munnerz/goautoneg",
-            "version": "v0.0.0-20191010083416-a7dc8b61c822"
-          },
-          {
-            "name": "github.com/niklasfasching/go-org",
-            "version": "v1.7.0"
-          },
-          {
-            "name": "github.com/nwaples/rardecode",
-            "version": "v1.1.3"
-          },
-          {
-            "name": "github.com/olekukonko/tablewriter",
-            "version": "v0.0.5"
-          },
-          {
-            "name": "github.com/olekukonko/ts",
-            "version": "v0.0.0-20171002115256-78ecb04241c0"
-          },
-          {
-            "name": "github.com/olivere/elastic/v7",
-            "version": "v7.0.32"
-          },
-          {
-            "name": "github.com/opencontainers/go-digest",
-            "version": "v1.0.0"
-          },
-          {
-            "name": "github.com/opencontainers/image-spec",
-            "version": "v1.1.1"
-          },
-          {
-            "name": "github.com/pierrec/lz4/v4",
-            "version": "v4.1.22"
-          },
-          {
-            "name": "github.com/pjbgf/sha1cd",
-            "version": "v0.3.2"
-          },
-          {
-            "name": "github.com/pkg/errors",
-            "version": "v0.0.0-20170505043639-c605e284fe17"
-          },
-          {
-            "name": "github.com/pmezard/go-difflib",
-            "version": "v1.0.1-0.20181226105442-5d4384ee4fb2"
-          },
-          {
-            "name": "github.com/pquerna/otp",
-            "version": "v1.4.0"
-          },
-          {
-            "name": "github.com/prometheus/client_golang",
-            "version": "v1.22.0"
-          },
-          {
-            "name": "github.com/prometheus/client_model",
-            "version": "v0.6.2"
-          },
-          {
-            "name": "github.com/prometheus/common",
-            "version": "v0.63.0"
-          },
-          {
-            "name": "github.com/prometheus/procfs",
-            "version": "v0.16.1"
-          },
-          {
-            "name": "github.com/redis/go-redis/v9",
-            "version": "v9.7.3"
-          },
-          {
-            "name": "github.com/rhysd/actionlint",
-            "version": "v1.7.7"
-          },
-          {
-            "name": "github.com/rivo/uniseg",
-            "version": "v0.4.7"
-          },
-          {
-            "name": "github.com/robfig/cron/v3",
-            "version": "v3.0.1"
-          },
-          {
-            "name": "github.com/rs/xid",
-            "version": "v1.6.0"
-          },
-          {
-            "name": "github.com/rubyist/tracerx",
-            "version": "v0.0.0-20170927163412-787959303086"
-          },
-          {
-            "name": "github.com/russross/blackfriday/v2",
-            "version": "v2.1.0"
-          },
-          {
-            "name": "github.com/santhosh-tekuri/jsonschema/v5",
-            "version": "v5.3.1"
-          },
-          {
-            "name": "github.com/sassoftware/go-rpmutils",
-            "version": "v0.4.0"
-          },
-          {
-            "name": "github.com/sergi/go-diff",
-            "version": "v1.3.2-0.20230802210424-5b0b94c5c0d3"
-          },
-          {
-            "name": "github.com/sirupsen/logrus",
-            "version": "v1.9.3"
-          },
-          {
-            "name": "github.com/skeema/knownhosts",
-            "version": "v1.3.1"
-          },
-          {
-            "name": "github.com/spf13/cobra",
-            "version": "v1.7.0"
-          },
-          {
-            "name": "github.com/spf13/pflag",
-            "version": "v1.0.5"
-          },
-          {
-            "name": "github.com/ssgelm/cookiejarparser",
-            "version": "v1.0.1"
-          },
-          {
-            "name": "github.com/ssor/bom",
-            "version": "v0.0.0-20170718123548-6386211fdfcf"
-          },
-          {
-            "name": "github.com/stretchr/testify",
-            "version": "v1.10.0"
-          },
-          {
-            "name": "github.com/syndtr/goleveldb",
-            "version": "v1.0.0"
-          },
-          {
-            "name": "github.com/tstranex/u2f",
-            "version": "v1.0.0"
-          },
-          {
-            "name": "github.com/ulikunitz/xz",
-            "version": "v0.5.12"
-          },
-          {
-            "name": "github.com/unknwon/com",
-            "version": "v1.0.1"
-          },
-          {
-            "name": "github.com/urfave/cli/v2",
-            "version": "v2.27.6"
-          },
-          {
-            "name": "github.com/valyala/fastjson",
-            "version": "v1.6.4"
-          },
-          {
-            "name": "github.com/wneessen/go-mail",
-            "version": "v0.6.2"
-          },
-          {
-            "name": "github.com/x448/float16",
-            "version": "v0.8.4"
-          },
-          {
-            "name": "github.com/xanzy/ssh-agent",
-            "version": "v0.3.3"
-          },
-          {
-            "name": "github.com/xi2/xz",
-            "version": "v0.0.0-20171230120015-48954b6210f8"
-          },
-          {
-            "name": "github.com/xrash/smetrics",
-            "version": "v0.0.0-20240521201337-686a1a2994c1"
-          },
-          {
-            "name": "github.com/yohcop/openid-go",
-            "version": "v1.0.1"
-          },
-          {
-            "name": "github.com/yuin/goldmark",
-            "version": "v1.7.10"
-          },
-          {
-            "name": "github.com/yuin/goldmark-highlighting/v2",
-            "version": "v2.0.0-20230729083705-37449abec8cc"
-          },
-          {
-            "name": "github.com/yuin/goldmark-meta",
-            "version": "v1.1.0"
-          },
-          {
-            "name": "github.com/zeebo/blake3",
-            "version": "v0.2.4"
-          },
-          {
-            "name": "gitlab.com/gitlab-org/api/client-go",
-            "version": "v0.127.0"
-          },
-          {
-            "name": "go.etcd.io/bbolt",
-            "version": "v1.4.0"
-          },
-          {
-            "name": "go.uber.org/atomic",
-            "version": "v1.11.0"
-          },
-          {
-            "name": "go.uber.org/multierr",
-            "version": "v1.11.0"
-          },
-          {
-            "name": "go.uber.org/zap",
-            "version": "v1.27.0"
-          },
-          {
-            "name": "go.uber.org/zap/exp",
-            "version": "v0.3.0"
-          },
-          {
-            "name": "golang.org/x/crypto",
-            "version": "v0.21.0"
-          },
-          {
-            "name": "golang.org/x/image",
-            "version": "v0.26.0"
-          },
-          {
-            "name": "golang.org/x/mod",
-            "version": "v0.24.0"
-          },
-          {
-            "name": "golang.org/x/net",
-            "version": "v0.23.0"
-          },
-          {
-            "name": "golang.org/x/oauth2",
-            "version": "v0.29.0"
-          },
-          {
-            "name": "golang.org/x/sync",
-            "version": "v0.1.0"
-          },
-          {
-            "name": "golang.org/x/sys",
-            "version": "v0.32.0"
-          },
-          {
-            "name": "golang.org/x/text",
-            "version": "v0.14.0"
-          },
-          {
-            "name": "golang.org/x/time",
-            "version": "v0.11.0"
-          },
-          {
-            "name": "google.golang.org/genproto/googleapis/rpc",
-            "version": "v0.0.0-20250422160041-2d3770c4ea7f"
-          },
-          {
-            "name": "google.golang.org/grpc",
-            "version": "v1.72.0"
-          },
-          {
-            "name": "google.golang.org/protobuf",
-            "version": "v1.36.6"
-          },
-          {
-            "name": "gopkg.in/ini.v1",
-            "version": "v1.67.0"
-          },
-          {
-            "name": "gopkg.in/warnings.v0",
-            "version": "v0.1.2"
-          },
-          {
-            "name": "gopkg.in/yaml.v2",
-            "version": "v2.4.0"
-          },
-          {
-            "name": "gopkg.in/yaml.v3",
-            "version": "v3.0.1"
-          },
-          {
-            "name": "mvdan.cc/xurls/v2",
-            "version": "v2.6.0"
-          },
-          {
-            "name": "stdlib",
-            "version": "v1.24.12"
-          },
-          {
-            "name": "strk.kbt.io/projects/go/libravatar",
-            "version": "v0.0.0-20191008002943-06d1c002b251"
-          },
-          {
-            "name": "xorm.io/builder",
-            "version": "v0.3.13"
-          },
-          {
-            "name": "xorm.io/xorm",
-            "version": "v1.3.9"
-          }
-        ]
-      },
-      "summary": {
-        "freebsd": 66,
-        "dotnet": 0,
-        "python": 1,
-        "node": 0,
-        "go": 266,
-        "total": 333
-      }
-    },
     "pkg": {
       "arch": "amd64",
-      "app_version": "1.24.2_8",
-      "source": "freebsd-quarterly",
-      "generated": "2026-02-05T23:51:37Z",
+      "app_version": "1.24.2_9",
+      "source": "pkg",
+      "generated": "2026-02-13T12:05:01Z",
       "packages": {
         "freebsd": [
           {
@@ -1371,7 +15,7 @@
           },
           {
             "name": "FreeBSD-blocklist",
-            "version": "15.0"
+            "version": "15.0p3"
           },
           {
             "name": "FreeBSD-bzip2-lib",
@@ -1507,11 +151,11 @@
           },
           {
             "name": "git-lfs",
-            "version": "3.6.1_12"
+            "version": "3.6.1_13"
           },
           {
             "name": "gitea",
-            "version": "1.24.2_8"
+            "version": "1.24.2_9"
           },
           {
             "name": "indexinfo",
@@ -1607,7 +251,7 @@
           },
           {
             "name": "python311",
-            "version": "3.11.14_1"
+            "version": "3.11.14_2"
           },
           {
             "name": "readline",
@@ -1631,14 +275,119 @@
           }
         ],
         "dotnet": [],
-        "python": [
-          {
-            "name": "example",
-            "version": "21.12"
-          }
-        ],
-        "node": [],
         "go": [
+          {
+            "name": "github.com/git-lfs/git-lfs/v3",
+            "version": ""
+          },
+          {
+            "name": "stdlib",
+            "version": "v1.24.13"
+          },
+          {
+            "name": "github.com/dpotapov/go-spnego",
+            "version": "v0.0.0-20210315154721-298b63a54430"
+          },
+          {
+            "name": "github.com/git-lfs/gitobj/v2",
+            "version": "v2.1.1"
+          },
+          {
+            "name": "github.com/git-lfs/go-netrc",
+            "version": "v0.0.0-20210914205454-f0c862dd687a"
+          },
+          {
+            "name": "github.com/git-lfs/pktline",
+            "version": "v0.0.0-20210330133718-06e9096e2825"
+          },
+          {
+            "name": "github.com/git-lfs/wildmatch/v2",
+            "version": "v2.0.1"
+          },
+          {
+            "name": "github.com/hashicorp/go-uuid",
+            "version": "v1.0.2"
+          },
+          {
+            "name": "github.com/jcmturner/aescts/v2",
+            "version": "v2.0.0"
+          },
+          {
+            "name": "github.com/jcmturner/dnsutils/v2",
+            "version": "v2.0.0"
+          },
+          {
+            "name": "github.com/jcmturner/gofork",
+            "version": "v1.0.0"
+          },
+          {
+            "name": "github.com/jcmturner/goidentity/v6",
+            "version": "v6.0.1"
+          },
+          {
+            "name": "github.com/jcmturner/gokrb5/v8",
+            "version": "v8.4.2"
+          },
+          {
+            "name": "github.com/jcmturner/rpc/v2",
+            "version": "v2.0.3"
+          },
+          {
+            "name": "github.com/jmhodges/clock",
+            "version": "v1.2.0"
+          },
+          {
+            "name": "github.com/leonelquinteros/gotext",
+            "version": "v1.5.0"
+          },
+          {
+            "name": "github.com/mattn/go-isatty",
+            "version": "v0.0.4"
+          },
+          {
+            "name": "github.com/olekukonko/ts",
+            "version": "v0.0.0-20171002115256-78ecb04241c0"
+          },
+          {
+            "name": "github.com/pkg/errors",
+            "version": "v0.0.0-20170505043639-c605e284fe17"
+          },
+          {
+            "name": "github.com/rubyist/tracerx",
+            "version": "v0.0.0-20170927163412-787959303086"
+          },
+          {
+            "name": "github.com/spf13/cobra",
+            "version": "v1.7.0"
+          },
+          {
+            "name": "github.com/spf13/pflag",
+            "version": "v1.0.5"
+          },
+          {
+            "name": "github.com/ssgelm/cookiejarparser",
+            "version": "v1.0.1"
+          },
+          {
+            "name": "golang.org/x/crypto",
+            "version": "v0.21.0"
+          },
+          {
+            "name": "golang.org/x/net",
+            "version": "v0.23.0"
+          },
+          {
+            "name": "golang.org/x/sync",
+            "version": "v0.1.0"
+          },
+          {
+            "name": "golang.org/x/text",
+            "version": "v0.14.0"
+          },
+          {
+            "name": "code.gitea.io/gitea",
+            "version": "1.24.2"
+          },
           {
             "name": "cloud.google.com/go/compute/metadata",
             "version": "v0.6.0"
@@ -1646,10 +395,6 @@
           {
             "name": "code.gitea.io/actions-proto-go",
             "version": "v0.4.1"
-          },
-          {
-            "name": "code.gitea.io/gitea",
-            "version": "1.24.2"
           },
           {
             "name": "code.gitea.io/sdk/gitea",
@@ -1964,10 +709,6 @@
             "version": "v1.11.5"
           },
           {
-            "name": "github.com/dpotapov/go-spnego",
-            "version": "v0.0.0-20210315154721-298b63a54430"
-          },
-          {
             "name": "github.com/dsnet/compress",
             "version": "v0.0.2-0.20210315054119-f66993602bf5"
           },
@@ -2010,26 +751,6 @@
           {
             "name": "github.com/fxamacker/cbor/v2",
             "version": "v2.8.0"
-          },
-          {
-            "name": "github.com/git-lfs/git-lfs/v3",
-            "version": null
-          },
-          {
-            "name": "github.com/git-lfs/gitobj/v2",
-            "version": "v2.1.1"
-          },
-          {
-            "name": "github.com/git-lfs/go-netrc",
-            "version": "v0.0.0-20210914205454-f0c862dd687a"
-          },
-          {
-            "name": "github.com/git-lfs/pktline",
-            "version": "v0.0.0-20210330133718-06e9096e2825"
-          },
-          {
-            "name": "github.com/git-lfs/wildmatch/v2",
-            "version": "v2.0.1"
           },
           {
             "name": "github.com/gliderlabs/ssh",
@@ -2220,10 +941,6 @@
             "version": "v0.7.7"
           },
           {
-            "name": "github.com/hashicorp/go-uuid",
-            "version": "v1.0.2"
-          },
-          {
             "name": "github.com/hashicorp/golang-lru/v2",
             "version": "v2.0.7"
           },
@@ -2240,36 +957,8 @@
             "version": "v0.0.0-20150711004518-d14ea06fba99"
           },
           {
-            "name": "github.com/jcmturner/aescts/v2",
-            "version": "v2.0.0"
-          },
-          {
-            "name": "github.com/jcmturner/dnsutils/v2",
-            "version": "v2.0.0"
-          },
-          {
-            "name": "github.com/jcmturner/gofork",
-            "version": "v1.0.0"
-          },
-          {
-            "name": "github.com/jcmturner/goidentity/v6",
-            "version": "v6.0.1"
-          },
-          {
-            "name": "github.com/jcmturner/gokrb5/v8",
-            "version": "v8.4.2"
-          },
-          {
-            "name": "github.com/jcmturner/rpc/v2",
-            "version": "v2.0.3"
-          },
-          {
             "name": "github.com/jhillyerd/enmime",
             "version": "v1.3.0"
-          },
-          {
-            "name": "github.com/jmhodges/clock",
-            "version": "v1.2.0"
           },
           {
             "name": "github.com/josharian/intern",
@@ -2300,10 +989,6 @@
             "version": "v1.2.6"
           },
           {
-            "name": "github.com/leonelquinteros/gotext",
-            "version": "v1.5.0"
-          },
-          {
             "name": "github.com/lib/pq",
             "version": "v1.10.9"
           },
@@ -2326,10 +1011,6 @@
           {
             "name": "github.com/mattn/go-colorable",
             "version": "v0.1.14"
-          },
-          {
-            "name": "github.com/mattn/go-isatty",
-            "version": "v0.0.4"
           },
           {
             "name": "github.com/mattn/go-runewidth",
@@ -2412,10 +1093,6 @@
             "version": "v0.0.5"
           },
           {
-            "name": "github.com/olekukonko/ts",
-            "version": "v0.0.0-20171002115256-78ecb04241c0"
-          },
-          {
             "name": "github.com/olivere/elastic/v7",
             "version": "v7.0.32"
           },
@@ -2434,10 +1111,6 @@
           {
             "name": "github.com/pjbgf/sha1cd",
             "version": "v0.3.2"
-          },
-          {
-            "name": "github.com/pkg/errors",
-            "version": "v0.0.0-20170505043639-c605e284fe17"
           },
           {
             "name": "github.com/pmezard/go-difflib",
@@ -2484,10 +1157,6 @@
             "version": "v1.6.0"
           },
           {
-            "name": "github.com/rubyist/tracerx",
-            "version": "v0.0.0-20170927163412-787959303086"
-          },
-          {
             "name": "github.com/russross/blackfriday/v2",
             "version": "v2.1.0"
           },
@@ -2510,18 +1179,6 @@
           {
             "name": "github.com/skeema/knownhosts",
             "version": "v1.3.1"
-          },
-          {
-            "name": "github.com/spf13/cobra",
-            "version": "v1.7.0"
-          },
-          {
-            "name": "github.com/spf13/pflag",
-            "version": "v1.0.5"
-          },
-          {
-            "name": "github.com/ssgelm/cookiejarparser",
-            "version": "v1.0.1"
           },
           {
             "name": "github.com/ssor/bom",
@@ -2620,10 +1277,6 @@
             "version": "v0.3.0"
           },
           {
-            "name": "golang.org/x/crypto",
-            "version": "v0.21.0"
-          },
-          {
             "name": "golang.org/x/image",
             "version": "v0.26.0"
           },
@@ -2632,24 +1285,12 @@
             "version": "v0.24.0"
           },
           {
-            "name": "golang.org/x/net",
-            "version": "v0.23.0"
-          },
-          {
             "name": "golang.org/x/oauth2",
             "version": "v0.29.0"
           },
           {
-            "name": "golang.org/x/sync",
-            "version": "v0.1.0"
-          },
-          {
             "name": "golang.org/x/sys",
             "version": "v0.32.0"
-          },
-          {
-            "name": "golang.org/x/text",
-            "version": "v0.14.0"
           },
           {
             "name": "golang.org/x/time",
@@ -2688,10 +1329,6 @@
             "version": "v2.6.0"
           },
           {
-            "name": "stdlib",
-            "version": "v1.24.12"
-          },
-          {
             "name": "strk.kbt.io/projects/go/libravatar",
             "version": "v0.0.0-20191008002943-06d1c002b251"
           },
@@ -2703,15 +1340,71 @@
             "name": "xorm.io/xorm",
             "version": "v1.3.9"
           }
+        ],
+        "java": [],
+        "node": [],
+        "php": [],
+        "python": [
+          {
+            "name": "example",
+            "version": "21.12"
+          }
+        ],
+        "ruby": [],
+        "rust": [
+          {
+            "name": "libgit",
+            "version": "0.1.0"
+          },
+          {
+            "name": "libgit-sys",
+            "version": "0.1.0"
+          },
+          {
+            "name": "autocfg",
+            "version": "1.4.0"
+          },
+          {
+            "name": "cc",
+            "version": "1.1.15"
+          },
+          {
+            "name": "libc",
+            "version": "0.2.158"
+          },
+          {
+            "name": "libz-sys",
+            "version": "1.1.20"
+          },
+          {
+            "name": "make-cmd",
+            "version": "0.1.0"
+          },
+          {
+            "name": "pkg-config",
+            "version": "0.3.30"
+          },
+          {
+            "name": "shlex",
+            "version": "1.3.0"
+          },
+          {
+            "name": "vcpkg",
+            "version": "0.2.15"
+          }
         ]
       },
       "summary": {
         "freebsd": 66,
         "dotnet": 0,
-        "python": 1,
-        "node": 0,
         "go": 266,
-        "total": 333
+        "java": 0,
+        "node": 0,
+        "php": 0,
+        "python": 1,
+        "ruby": 0,
+        "rust": 10,
+        "total": 343
       }
     }
   }
