@@ -1,12 +1,12 @@
 {
   "image": "gitea",
-  "generated": "2026-02-13T22:03:29Z",
+  "generated": "2026-02-14T10:01:02Z",
   "tags": {
     "pkg-latest": {
       "arch": "amd64",
-      "app_version": "1.24.2_9",
+      "app_version": "1.24.2_10",
       "source": "pkg",
-      "generated": "2026-02-13T21:56:48Z",
+      "generated": "2026-02-14T10:00:40Z",
       "packages": {
         "freebsd": [
           {
@@ -151,11 +151,11 @@
           },
           {
             "name": "git-lfs",
-            "version": "3.6.1_13"
+            "version": "3.6.1_14"
           },
           {
             "name": "gitea",
-            "version": "1.24.2_9"
+            "version": "1.24.2_10"
           },
           {
             "name": "indexinfo",
@@ -282,7 +282,7 @@
           },
           {
             "name": "stdlib",
-            "version": "v1.24.13"
+            "version": "v1.25.7"
           },
           {
             "name": "github.com/dpotapov/go-spnego",
@@ -1411,7 +1411,7 @@
       "arch": "amd64",
       "app_version": "1.24.2_9",
       "source": "pkg",
-      "generated": "2026-02-13T21:56:08Z",
+      "generated": "2026-02-14T10:00:51Z",
       "packages": {
         "freebsd": [
           {
