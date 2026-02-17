@@ -1,12 +1,12 @@
 {
   "image": "gitea",
-  "generated": "2026-02-14T14:34:16Z",
+  "generated": "2026-02-17T19:57:00Z",
   "tags": {
     "pkg-latest": {
       "arch": "amd64",
       "app_version": "1.24.2_10",
       "source": "pkg",
-      "generated": "2026-02-14T14:20:16Z",
+      "generated": "2026-02-17T19:56:42Z",
       "packages": {
         "freebsd": [
           {
@@ -1411,7 +1411,7 @@
       "arch": "amd64",
       "app_version": "1.24.2_9",
       "source": "pkg",
-      "generated": "2026-02-14T14:20:22Z",
+      "generated": "2026-02-17T19:55:40Z",
       "packages": {
         "freebsd": [
           {
