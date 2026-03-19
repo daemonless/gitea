@@ -1,12 +1,12 @@
 {
   "image": "gitea",
-  "generated": "2026-03-08T13:13:56Z",
+  "generated": "2026-03-19T18:26:13Z",
   "tags": {
     "pkg-latest": {
       "arch": "amd64",
       "app_version": "1.25.4_1",
       "source": "pkg",
-      "generated": "2026-03-08T13:12:02Z",
+      "generated": "2026-03-19T18:26:01Z",
       "packages": {
         "freebsd": [
           {
@@ -135,7 +135,7 @@
           },
           {
             "name": "execline",
-            "version": "2.9.7.0"
+            "version": "2.9.8.1"
           },
           {
             "name": "expat",
@@ -215,7 +215,7 @@
           },
           {
             "name": "p5-IO-Socket-SSL",
-            "version": "2.095"
+            "version": "2.098"
           },
           {
             "name": "p5-MIME-Base32",
@@ -243,11 +243,11 @@
           },
           {
             "name": "perl5",
-            "version": "5.42.0_1"
+            "version": "5.42.1"
           },
           {
             "name": "pkg",
-            "version": "2.6.2"
+            "version": "2.6.2_1"
           },
           {
             "name": "python311",
@@ -259,15 +259,15 @@
           },
           {
             "name": "s6",
-            "version": "2.13.2.0"
+            "version": "2.14.0.1"
           },
           {
             "name": "s6-rc",
-            "version": "0.5.6.0"
+            "version": "0.6.0.0"
           },
           {
             "name": "skalibs",
-            "version": "2.14.4.0"
+            "version": "2.14.5.1"
           },
           {
             "name": "zstd",
@@ -1463,7 +1463,7 @@
       "arch": "amd64",
       "app_version": "1.24.2_10",
       "source": "pkg",
-      "generated": "2026-03-08T13:13:46Z",
+      "generated": "2026-03-19T18:24:58Z",
       "packages": {
         "freebsd": [
           {
