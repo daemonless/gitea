@@ -17,7 +17,7 @@ ENV HEALTHCHECK_URL="${HEALTHCHECK_ENDPOINT}"
 
 # --- Metadata (Injected by Generator) ---
 LABEL org.opencontainers.image.title="Gitea" \
-      org.opencontainers.image.description="Gitea self-hosted Git service on FreeBSD." \
+      org.opencontainers.image.description="Lightweight self-hosted Git service — a community managed fork of Gogs written in Go." \
       org.opencontainers.image.source="https://github.com/daemonless/gitea" \
       org.opencontainers.image.url="https://about.gitea.com/" \
       org.opencontainers.image.documentation="https://docs.gitea.com/" \

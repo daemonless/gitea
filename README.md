@@ -5,15 +5,28 @@ Source: dbuild templates
 
 # Gitea
 
-Gitea self-hosted Git service on FreeBSD.
+[![Build Status](https://img.shields.io/github/actions/workflow/status/daemonless/gitea/build.yaml?style=flat-square&label=Build&color=green)](https://github.com/daemonless/gitea/actions)
+[![Last Commit](https://img.shields.io/github/last-commit/daemonless/gitea?style=flat-square&label=Last+Commit&color=blue)](https://github.com/daemonless/gitea/commits)
+
+Lightweight self-hosted Git service — a community managed fork of Gogs written in Go.
 
 | | |
 |---|---|
 | **Port** | 3000 |
 | **Registry** | `ghcr.io/daemonless/gitea` |
-| **Docs** | [daemonless.io/images/gitea](https://daemonless.io/images/gitea/) |
 | **Source** | [https://github.com/go-gitea/gitea](https://github.com/go-gitea/gitea) |
 | **Website** | [https://about.gitea.com/](https://about.gitea.com/) |
+
+## Version Tags
+
+| Tag | Description | Best For |
+| :--- | :--- | :--- |
+| `latest` / `pkg` | **FreeBSD Quarterly**. Uses stable, tested packages. | Most users. Matches Linux Docker behavior. |
+| `pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Newest FreeBSD packages. |
+
+## Prerequisites
+
+Before deploying, ensure your host environment is ready. See the [Quick Start Guide](https://daemonless.io/guides/quick-start) for host setup instructions.
 
 ## Deployment
 
@@ -29,11 +42,55 @@ services:
       - PGID=1000
       - TZ=UTC
     volumes:
-      - /path/to/containers/gitea:/config
+      - "/path/to/containers/gitea:/config"
     ports:
       - 3000:3000
       - 2222:2222
     restart: unless-stopped
+```
+
+### AppJail Director
+
+**.env**:
+
+```
+DIRECTOR_PROJECT=gitea
+PUID=1000
+PGID=1000
+TZ=UTC
+```
+
+**appjail-director.yml**:
+
+```yaml
+options:
+  - virtualnet: ':<random> default'
+  - nat:
+services:
+  gitea:
+    name: gitea
+    options:
+      - container: 'boot args:--pull'
+    oci:
+      user: root
+      environment:
+        - PUID: !ENV '${PUID}'
+        - PGID: !ENV '${PGID}'
+        - TZ: !ENV '${TZ}'
+    volumes:
+      - gitea: /config
+volumes:
+  gitea:
+    device: '/path/to/containers/gitea'
+```
+
+**Makejail**:
+
+```
+ARG tag=latest
+
+OPTION overwrite=force
+OPTION from=ghcr.io/daemonless/gitea:${tag}
 ```
 
 ### Podman CLI
@@ -42,13 +99,12 @@ services:
 podman run -d --name gitea \
   -p 3000:3000 \
   -p 2222:2222 \
-  -e PUID=@PUID@ \
-  -e PGID=@PGID@ \
-  -e TZ=@TZ@ \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=UTC \
   -v /path/to/containers/gitea:/config \
   ghcr.io/daemonless/gitea:latest
 ```
-Access at: `http://localhost:3000`
 
 ### Ansible
 
@@ -60,9 +116,9 @@ Access at: `http://localhost:3000`
     state: started
     restart_policy: always
     env:
-      PUID: "@PUID@"
-      PGID: "@PGID@"
-      TZ: "@TZ@"
+      PUID: "1000"
+      PGID: "1000"
+      TZ: "UTC"
     ports:
       - "3000:3000"
       - "2222:2222"
@@ -70,7 +126,10 @@ Access at: `http://localhost:3000`
       - "/path/to/containers/gitea:/config"
 ```
 
-## Configuration
+Access at: `http://localhost:3000`
+
+## Parameters
+
 ### Environment Variables
 
 | Variable | Default | Description |
@@ -78,11 +137,13 @@ Access at: `http://localhost:3000`
 | `PUID` | `1000` | User ID for the application process |
 | `PGID` | `1000` | Group ID for the application process |
 | `TZ` | `UTC` | Timezone for the container |
+
 ### Volumes
 
 | Path | Description |
 |------|-------------|
 | `/config` | Configuration, repositories, and data directory |
+
 ### Ports
 
 | Port | Protocol | Description |
@@ -90,8 +151,10 @@ Access at: `http://localhost:3000`
 | `3000` | TCP | Web UI |
 | `2222` | TCP |  |
 
-## Notes
+**Architectures:** amd64
+**User:** `bsd` (UID/GID via PUID/PGID, defaults to 1000:1000)
+**Base:** FreeBSD 15.0
 
-- **Architectures:** amd64
-- **User:** `bsd` (UID/GID set via PUID/PGID)
-- **Base:** Built on `ghcr.io/daemonless/base` (FreeBSD)
+---
+
+Need help? Join our [Discord](https://discord.gg/Kb9tkhecZT) community.
