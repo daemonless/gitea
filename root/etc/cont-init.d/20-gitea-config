@@ -42,8 +42,7 @@ PATH = /config/data/gitea.db
 DB_TYPE = sqlite3
 
 [log]
-ROOT_PATH = /config/log
-MODE = console,file
+MODE = console
 LEVEL = info
 
 [security]
