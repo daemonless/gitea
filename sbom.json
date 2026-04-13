@@ -1,11 +1,11 @@
 {
-  "generated": "2026-04-12T08:26:34Z",
+  "generated": "2026-04-13T11:25:38Z",
   "image": "gitea",
   "tags": {
     "pkg": {
       "app_version": "1.25.5_1",
       "arch": "amd64",
-      "generated": "2026-04-12T08:25:21Z",
+      "generated": "2026-04-13T11:24:23Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1460,9 +1460,9 @@
       }
     },
     "pkg-latest": {
-      "app_version": "1.25.5",
+      "app_version": "1.25.5_1",
       "arch": "amd64",
-      "generated": "2026-04-12T08:25:16Z",
+      "generated": "2026-04-13T11:24:27Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1612,11 +1612,11 @@
           },
           {
             "name": "git-lfs",
-            "version": "3.6.1_15"
+            "version": "3.6.1_16"
           },
           {
             "name": "gitea",
-            "version": "1.25.5"
+            "version": "1.25.5_1"
           },
           {
             "name": "indexinfo",
@@ -2834,7 +2834,7 @@
           },
           {
             "name": "stdlib",
-            "version": "v1.25.8"
+            "version": "v1.25.9"
           },
           {
             "name": "strk.kbt.io/projects/go/libravatar",
