@@ -1,11 +1,11 @@
 {
-  "generated": "2026-05-26T14:29:04Z",
+  "generated": "2026-06-04T16:30:55Z",
   "image": "gitea",
   "tags": {
     "pkg": {
-      "app_version": "1.26.1_1",
+      "app_version": "1.26.1_2",
       "arch": "amd64",
-      "generated": "2026-05-26T14:27:04Z",
+      "generated": "2026-06-04T16:29:24Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -155,11 +155,11 @@
           },
           {
             "name": "git-lfs",
-            "version": "3.6.1_17"
+            "version": "3.6.1_18"
           },
           {
             "name": "gitea",
-            "version": "1.26.1_1"
+            "version": "1.26.1_2"
           },
           {
             "name": "indexinfo",
@@ -1369,7 +1369,7 @@
           },
           {
             "name": "stdlib",
-            "version": "v1.25.10"
+            "version": "v1.25.11"
           },
           {
             "name": "strk.kbt.io/projects/go/libravatar",
@@ -1452,9 +1452,9 @@
       }
     },
     "pkg-latest": {
-      "app_version": "1.26.1_1",
+      "app_version": "1.26.1_2",
       "arch": "amd64",
-      "generated": "2026-05-26T14:27:47Z",
+      "generated": "2026-06-04T16:29:26Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1604,11 +1604,11 @@
           },
           {
             "name": "git-lfs",
-            "version": "3.6.1_17"
+            "version": "3.6.1_18"
           },
           {
             "name": "gitea",
-            "version": "1.26.1_1"
+            "version": "1.26.1_2"
           },
           {
             "name": "indexinfo",
@@ -1625,6 +1625,10 @@
           {
             "name": "libidn2",
             "version": "2.3.8"
+          },
+          {
+            "name": "liblz4",
+            "version": "1.10.0_2,1"
           },
           {
             "name": "libnghttp2",
@@ -1720,7 +1724,7 @@
           },
           {
             "name": "zstd",
-            "version": "1.5.7_1"
+            "version": "1.5.7_2"
           }
         ],
         "go": [
@@ -2818,7 +2822,7 @@
           },
           {
             "name": "stdlib",
-            "version": "v1.25.10"
+            "version": "v1.25.11"
           },
           {
             "name": "strk.kbt.io/projects/go/libravatar",
@@ -2889,7 +2893,7 @@
       "source": "pkg",
       "summary": {
         "dotnet": 0,
-        "freebsd": 66,
+        "freebsd": 67,
         "go": 277,
         "java": 0,
         "node": 0,
@@ -2897,7 +2901,7 @@
         "python": 1,
         "ruby": 0,
         "rust": 10,
-        "total": 354
+        "total": 355
       }
     }
   }
