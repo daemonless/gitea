@@ -10,7 +10,6 @@ Source: dbuild templates
 
 Lightweight self-hosted Git service — a community managed fork of Gogs written in Go.
 
-
 | | |
 |---|---|
 | **Port** | 3000 |
@@ -36,17 +35,19 @@ Before deploying, ensure your host environment is ready. See the [Quick Start Gu
 ```yaml
 services:
   gitea:
-    image: ghcr.io/daemonless/gitea:latest
+    image: "ghcr.io/daemonless/gitea:latest"
     container_name: gitea
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=UTC
+      - PUID=1000  # User ID for the application process
+      - PGID=1000  # Group ID for the application process
+      - TZ=UTC  # Timezone for the container
+      - SSH_PORT=2222  # Published port for sshd (used in clone URLs)
+      - SSH_LISTEN_PORT=22  # Port on which sshd listens inside the container
     volumes:
       - "/path/to/containers/gitea:/config"
     ports:
-      - 3000:3000
-      - 2222:2222
+      - "3000:3000"
+      - "2222:22"
     restart: unless-stopped
 ```
 
@@ -59,6 +60,8 @@ DIRECTOR_PROJECT=gitea
 PUID=1000
 PGID=1000
 TZ=UTC
+SSH_PORT=2222
+SSH_LISTEN_PORT=22
 ```
 
 **appjail-director.yml**:
@@ -78,6 +81,8 @@ services:
         - PUID: !ENV '${PUID}'
         - PGID: !ENV '${PGID}'
         - TZ: !ENV '${TZ}'
+        - SSH_PORT: !ENV '${SSH_PORT}'
+        - SSH_LISTEN_PORT: !ENV '${SSH_LISTEN_PORT}'
     volumes:
       - gitea: /config
 volumes:
@@ -99,10 +104,12 @@ OPTION from=ghcr.io/daemonless/gitea:${tag}
 ```bash
 podman run -d --name gitea \
   -p 3000:3000 \
-  -p 2222:2222 \
+  -p 2222:22 \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=UTC \
+  -e SSH_PORT=2222 \
+  -e SSH_LISTEN_PORT=22 \
   -v /path/to/containers/gitea:/config \
   ghcr.io/daemonless/gitea:latest
 ```
@@ -113,16 +120,18 @@ podman run -d --name gitea \
 - name: Deploy gitea
   containers.podman.podman_container:
     name: gitea
-    image: ghcr.io/daemonless/gitea:latest
+    image: "ghcr.io/daemonless/gitea:latest"
     state: started
     restart_policy: always
     env:
       PUID: "1000"
       PGID: "1000"
       TZ: "UTC"
+      SSH_PORT: "2222"
+      SSH_LISTEN_PORT: "22"
     ports:
       - "3000:3000"
-      - "2222:2222"
+      - "2222:22"
     volumes:
       - "/path/to/containers/gitea:/config"
 ```
@@ -138,6 +147,8 @@ Access at: `http://localhost:3000`
 | `PUID` | `1000` | User ID for the application process |
 | `PGID` | `1000` | Group ID for the application process |
 | `TZ` | `UTC` | Timezone for the container |
+| `SSH_PORT` | `2222` | Published port for sshd (used in clone URLs) |
+| `SSH_LISTEN_PORT` | `22` | Port on which sshd listens inside the container |
 
 ### Volumes
 
@@ -150,7 +161,31 @@ Access at: `http://localhost:3000`
 | Port | Protocol | Description |
 |------|----------|-------------|
 | `3000` | TCP | Web UI |
-| `2222` | TCP |  |
+| `22` | TCP | SSH port |
+
+## First run
+If no configuration file exists when the container starts, it will generate an initial default
+config file at `/config/custom/conf/app.ini`.
+You can make configuration changes in this file later (e.g. SMTP configuration) and they will be
+preserved across container restarts.
+
+## SSH Setup
+If you modify the port mapping from the default `2222:22` you need to update the 2 environment variables
+described below accordingly.
+
+### `SSH_LISTEN_PORT` env var
+This variable indicates on which port Gitea's ssh server listens inside the container.
+If your port mapping for ssh is `2222:22`, this variable should be set to `22`.
+This variable is used on every container start to modify the Gitea configuration.
+
+### `SSH_PORT` env var
+This variable tells Gitea on which port the ssh server is reachable from the outside and is
+used when constructing the `ssh` URLs shown in Gitea's web UI.
+If your port mapping for ssh is `2222:22`, this variable should be set to `2222`.
+This variable is used only during the first container startup to create the initial configuration file for Gitea.
+If you want to modify the `SSH_PORT` later, you need to change the configuration in the `[server]`
+section of `/config/custom/conf/app.ini`.
+
 
 **Architectures:** amd64
 **User:** `bsd` (UID/GID via PUID/PGID, defaults to 1000:1000)
