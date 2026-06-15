@@ -1,11 +1,11 @@
 {
-  "generated": "2026-06-15T07:53:29Z",
+  "generated": "2026-06-15T23:19:13Z",
   "image": "gitea",
   "tags": {
     "pkg": {
       "app_version": "1.26.1_2",
       "arch": "amd64",
-      "generated": "2026-06-15T07:50:17Z",
+      "generated": "2026-06-15T23:18:02Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1454,7 +1454,7 @@
     "pkg-latest": {
       "app_version": "1.26.1_2",
       "arch": "amd64",
-      "generated": "2026-06-15T07:52:12Z",
+      "generated": "2026-06-15T23:17:16Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
