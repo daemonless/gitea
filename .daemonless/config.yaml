@@ -8,10 +8,15 @@ cit:
 
 build:
   variants:
+    - tag: latest
+      containerfile: Containerfile
+      default: true
+    - tag: latest-latest
+      containerfile: Containerfile
+      args:
+        BASE_VERSION: "15-latest"
     - tag: pkg
       containerfile: Containerfile.pkg
-      aliases: ["latest"]
-      default: true
     - tag: pkg-latest
       containerfile: Containerfile.pkg
       args:

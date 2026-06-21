@@ -21,7 +21,9 @@ Lightweight self-hosted Git service — a community managed fork of Gogs written
 
 | Tag | Description | Best For |
 | :--- | :--- | :--- |
-| `latest` / `pkg` | **FreeBSD Quarterly**. Uses stable, tested packages. | Most users. Matches Linux Docker behavior. |
+| `latest` | **Upstream Binary**. Built from official release. | Most users. Matches Linux Docker behavior. |
+| `latest-latest` | **FreeBSD Latest**. Rolling package updates. | Newest FreeBSD packages. |
+| `pkg` | **FreeBSD Quarterly**. Uses stable, tested packages. | Production stability. |
 | `pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Newest FreeBSD packages. |
 
 ## Prerequisites
@@ -75,6 +77,8 @@ services:
     name: gitea
     options:
       - container: 'boot args:--pull'
+      - expose="3000:3000 proto:tcp" \
+      - expose="2222:22 proto:tcp" \
     oci:
       user: root
       environment:
@@ -98,6 +102,7 @@ ARG tag=latest
 OPTION overwrite=force
 OPTION from=ghcr.io/daemonless/gitea:${tag}
 ```
+**Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
 
 ### Podman CLI
 
@@ -113,6 +118,26 @@ podman run -d --name gitea \
   -v /path/to/containers/gitea:/config \
   ghcr.io/daemonless/gitea:latest
 ```
+
+### AppJail
+
+```bash
+appjail oci run -Pd \
+  -o overwrite=force \
+  -o container="args:--pull" \
+  -o virtualnet=":<random> default" \
+  -o nat \
+  -o expose="3000:3000 proto:tcp" \
+  -o expose="2222:22 proto:tcp" \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=UTC \
+  -e SSH_PORT=2222 \
+  -e SSH_LISTEN_PORT=22 \
+  -o fstab="/path/to/containers/gitea /config <pseudofs>" \
+  ghcr.io/daemonless/gitea:latest gitea
+```
+**Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
 
 ### Ansible
 
@@ -189,7 +214,7 @@ section of `/config/custom/conf/app.ini`.
 
 **Architectures:** amd64
 **User:** `bsd` (UID/GID via PUID/PGID, defaults to 1000:1000)
-**Base:** FreeBSD 15.0
+**Base:** FreeBSD 15.1
 
 ---
 

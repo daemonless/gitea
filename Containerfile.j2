@@ -1,10 +1,13 @@
 ARG BASE_VERSION=15.1
+
+ARG UPSTREAM_URL="https://api.github.com/repos/go-gitea/gitea/releases/tags/v1.26.2"
+ARG UPSTREAM_JQ=".tag_name"
+ARG BINARY_JQ=".assets[] | select(.name | test(\"^gitea-.*-freebsd14-amd64$\")) | .browser_download_url"
+
 FROM ghcr.io/daemonless/base:${BASE_VERSION}
 
 ARG FREEBSD_ARCH=amd64
-ARG PACKAGES="gitea"
-ARG UPSTREAM_URL="https://api.github.com/repos/go-gitea/gitea/releases/latest"
-ARG UPSTREAM_JQ=".tag_name"
+ARG PACKAGES="FreeBSD-ssh devel/git-lfs shells/bash"
 {%- if ports %}
 ARG HEALTHCHECK_ENDPOINT="http://localhost:{{ ports[0].port }}/api/healthz"
 {%- else %}
@@ -18,7 +21,6 @@ LABEL org.opencontainers.image.title="{{ title }}" \
       org.opencontainers.image.description="{{ description }}" \
       org.opencontainers.image.source="{{ repo_url }}" \
       org.opencontainers.image.url="{{ web_url }}" \
-      org.opencontainers.image.documentation="https://docs.gitea.com/" \
       org.opencontainers.image.licenses="MIT" \
       org.opencontainers.image.vendor="daemonless" \
       org.opencontainers.image.authors="daemonless" \
@@ -33,36 +35,50 @@ LABEL org.opencontainers.image.title="{{ title }}" \
       org.freebsd.jail.allow.mlock="required" \
 {%- endif %}
       io.daemonless.arch="${FREEBSD_ARCH}" \
-      io.daemonless.pkg-source="pkg" \
       io.daemonless.upstream-url="${UPSTREAM_URL}" \
-      io.daemonless.upstream-jq="${UPSTREAM_JQ}" \
-      io.daemonless.healthcheck-url="${HEALTHCHECK_ENDPOINT}" \
-      io.daemonless.packages="${PACKAGES}"
+      io.daemonless.healthcheck-url="${HEALTHCHECK_ENDPOINT}"
 
-# Install Gitea from FreeBSD packages (pkg handles all dependencies)
-RUN pkg update && \
-    pkg install -y ${PACKAGES} && \
+# Update to latest patch level
+RUN pkg update -r FreeBSD-base && \
+    pkg upgrade -y -r FreeBSD-base && \
     pkg clean -ay && \
     rm -rf /var/cache/pkg/* /var/db/pkg/repos/*
 
-# Create version info
-RUN GITEA_VERSION=$(pkg info gitea | sed -n 's/.*Version.*: *//p') && \
-    printf "Version: %s\nPackageAuthor: [daemonless](https://github.com/daemonless/daemonless)\n" "$GITEA_VERSION" > /usr/local/share/gitea/version_info && \
-    mkdir -p /app && echo "$GITEA_VERSION" > /app/version
+# Install run dependencies
+RUN pkg update && \
+    pkg install -y \
+    ${PACKAGES} && \
+    pkg clean -ay && \
+    rm -rf /var/cache/pkg/* /var/db/pkg/repos/*
 
 # Create required directories
-RUN mkdir -p /config/data /config/custom/conf /config/repos /config/log /config/lfs /config/tmp && \
-    chown -R bsd:bsd /config
+RUN mkdir -m 0755 -p /app /config/bin /config/data /config/custom/conf /config/repos /config/log /config/lfs /config/tmp && \
+    chown -R bsd:bsd /app /config
+
+ARG UPSTREAM_URL
+ARG UPSTREAM_JQ
+ARG BINARY_JQ
+
+# Download Gitea binary from GitHub Releases
+RUN fetch -qo /tmp/latest.json "${UPSTREAM_URL}" && \
+    BINARY_URL=$(jq -r "${BINARY_JQ}" /tmp/latest.json) && \
+    echo "Downloading Gitea from ${BINARY_URL}..." && \
+    fetch -qo /usr/local/sbin/gitea "${BINARY_URL}" && \
+    chmod 755 /usr/local/sbin/gitea && \
+    chown bsd:bsd /usr/local/sbin/gitea && \
+    VERSION=$(jq -r "${UPSTREAM_JQ}" /tmp/latest.json) && \
+    echo "${VERSION}" | sed -n 's/^v\(.*\)$/\1/p' > /app/version && \
+    rm -f /tmp/latest.json
 
 # Copy service definition and init scripts
 COPY root/ /
 
 # Make scripts executable
-RUN chmod +x /etc/services.d/gitea/run /etc/cont-init.d/* 2>/dev/null || true
+RUN chmod +x /etc/services.d/*/run /etc/cont-init.d/* 2>/dev/null || true
 
 # --- Expose (Injected by Generator) ---
 {%- if ports %}
-EXPOSE {{ ports | map(attribute='port') | join(' ') }}
+EXPOSE {{ ports | map(attribute='target') | join(' ') }}
 {%- endif %}
 
 # --- Volumes (Injected by Generator) ---

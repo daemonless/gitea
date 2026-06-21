@@ -10,7 +10,7 @@ x-daemonless:
   freshports_url: "https://www.freshports.org/www/gitea/"
   user: "bsd"
   mlock: false
-  upstream_binary: false
+  upstream_binary: true
   appjail: true
 
   docs:
