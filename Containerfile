@@ -6,7 +6,7 @@
 
 ARG BASE_VERSION=15.1
 
-ARG UPSTREAM_URL="https://api.github.com/repos/go-gitea/gitea/releases/tags/v1.26.2"
+ARG UPSTREAM_URL="https://api.github.com/repos/go-gitea/gitea/releases/latest"
 ARG UPSTREAM_JQ=".tag_name"
 ARG BINARY_JQ=".assets[] | select(.name | test(\"^gitea-.*-freebsd14-amd64$\")) | .browser_download_url"
 
