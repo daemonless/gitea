@@ -1,11 +1,11 @@
 {
-  "generated": "2026-06-21T23:26:13Z",
+  "generated": "2026-07-01T11:06:50Z",
   "image": "gitea",
   "tags": {
     "latest": {
       "app_version": "1.26.4",
       "arch": "amd64",
-      "generated": "2026-06-21T23:24:18Z",
+      "generated": "2026-07-01T11:05:00Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -27,7 +27,7 @@
           },
           {
             "name": "FreeBSD-clibs",
-            "version": "15.1"
+            "version": "15.1p1"
           },
           {
             "name": "FreeBSD-ctf-lib",
@@ -99,7 +99,7 @@
           },
           {
             "name": "FreeBSD-runtime",
-            "version": "15.1"
+            "version": "15.1p1"
           },
           {
             "name": "FreeBSD-ssh",
@@ -115,7 +115,7 @@
           },
           {
             "name": "FreeBSD-utilities",
-            "version": "15.1"
+            "version": "15.1p1"
           },
           {
             "name": "FreeBSD-xz-lib",
@@ -123,7 +123,7 @@
           },
           {
             "name": "FreeBSD-zfs-lib",
-            "version": "15.1"
+            "version": "15.1p1"
           },
           {
             "name": "FreeBSD-zlib",
@@ -151,7 +151,7 @@
           },
           {
             "name": "curl",
-            "version": "8.20.0"
+            "version": "8.21.0"
           },
           {
             "name": "execline",
@@ -267,7 +267,7 @@
           },
           {
             "name": "python311",
-            "version": "3.11.15_3"
+            "version": "3.11.15_4"
           },
           {
             "name": "readline",
@@ -1462,7 +1462,7 @@
     "latest-latest": {
       "app_version": "1.26.4",
       "arch": "amd64",
-      "generated": "2026-06-21T23:24:25Z",
+      "generated": "2026-07-01T11:03:56Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1484,7 +1484,7 @@
           },
           {
             "name": "FreeBSD-clibs",
-            "version": "15.0"
+            "version": "15.0p11"
           },
           {
             "name": "FreeBSD-ctf-lib",
@@ -1552,7 +1552,7 @@
           },
           {
             "name": "FreeBSD-runtime",
-            "version": "15.0p10"
+            "version": "15.0p11"
           },
           {
             "name": "FreeBSD-ssh",
@@ -1568,7 +1568,7 @@
           },
           {
             "name": "FreeBSD-utilities",
-            "version": "15.0p10"
+            "version": "15.0p11"
           },
           {
             "name": "FreeBSD-xz-lib",
@@ -1576,7 +1576,7 @@
           },
           {
             "name": "FreeBSD-zfs-lib",
-            "version": "15.0p10"
+            "version": "15.0p11"
           },
           {
             "name": "FreeBSD-zlib",
@@ -1632,7 +1632,7 @@
           },
           {
             "name": "libffi",
-            "version": "3.5.2"
+            "version": "3.6.0"
           },
           {
             "name": "libidn2",
@@ -1652,7 +1652,7 @@
           },
           {
             "name": "libssh2",
-            "version": "1.11.1,3"
+            "version": "1.11.1_1,3"
           },
           {
             "name": "libunistring",
@@ -1684,7 +1684,7 @@
           },
           {
             "name": "p5-IO-Socket-SSL",
-            "version": "2.098"
+            "version": "2.099"
           },
           {
             "name": "p5-MIME-Base32",
@@ -1719,8 +1719,8 @@
             "version": "2.7.5"
           },
           {
-            "name": "python311",
-            "version": "3.11.15_3"
+            "name": "python312",
+            "version": "3.12.13_3"
           },
           {
             "name": "readline",
@@ -2913,9 +2913,9 @@
       }
     },
     "pkg": {
-      "app_version": "1.26.1_2",
+      "app_version": "1.26.4",
       "arch": "amd64",
-      "generated": "2026-06-21T23:24:24Z",
+      "generated": "2026-07-01T11:05:37Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -3053,7 +3053,7 @@
           },
           {
             "name": "curl",
-            "version": "8.20.0"
+            "version": "8.21.0"
           },
           {
             "name": "execline",
@@ -3077,7 +3077,7 @@
           },
           {
             "name": "gitea",
-            "version": "1.26.1_2"
+            "version": "1.26.4"
           },
           {
             "name": "indexinfo",
@@ -3173,7 +3173,7 @@
           },
           {
             "name": "python311",
-            "version": "3.11.15_3"
+            "version": "3.11.15_4"
           },
           {
             "name": "readline",
@@ -3203,7 +3203,7 @@
           },
           {
             "name": "code.gitea.io/gitea",
-            "version": "1.26.1"
+            "version": "1.26.4"
           },
           {
             "name": "code.gitea.io/sdk/gitea",
@@ -3627,11 +3627,11 @@
           },
           {
             "name": "github.com/go-git/go-billy/v5",
-            "version": "v5.8.0"
+            "version": "v5.9.0"
           },
           {
             "name": "github.com/go-git/go-git/v5",
-            "version": "v5.18.0"
+            "version": "v5.19.0"
           },
           {
             "name": "github.com/go-ini/ini",
@@ -4015,7 +4015,7 @@
           },
           {
             "name": "github.com/pjbgf/sha1cd",
-            "version": "v0.5.0"
+            "version": "v0.6.0"
           },
           {
             "name": "github.com/pkg/errors",
@@ -4227,11 +4227,11 @@
           },
           {
             "name": "golang.org/x/image",
-            "version": "v0.38.0"
+            "version": "v0.40.0"
           },
           {
             "name": "golang.org/x/mod",
-            "version": "v0.34.0"
+            "version": "v0.35.0"
           },
           {
             "name": "golang.org/x/net",
@@ -4247,7 +4247,7 @@
           },
           {
             "name": "golang.org/x/sys",
-            "version": "v0.42.0"
+            "version": "v0.45.0"
           },
           {
             "name": "golang.org/x/text",
@@ -4372,7 +4372,7 @@
     "pkg-latest": {
       "app_version": "1.26.1_2",
       "arch": "amd64",
-      "generated": "2026-06-21T23:25:01Z",
+      "generated": "2026-07-01T11:03:31Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -4538,7 +4538,7 @@
           },
           {
             "name": "libffi",
-            "version": "3.5.2"
+            "version": "3.6.0"
           },
           {
             "name": "libidn2",
@@ -4558,7 +4558,7 @@
           },
           {
             "name": "libssh2",
-            "version": "1.11.1,3"
+            "version": "1.11.1_1,3"
           },
           {
             "name": "libunistring",
@@ -4590,7 +4590,7 @@
           },
           {
             "name": "p5-IO-Socket-SSL",
-            "version": "2.098"
+            "version": "2.099"
           },
           {
             "name": "p5-MIME-Base32",
@@ -4625,8 +4625,8 @@
             "version": "2.7.5"
           },
           {
-            "name": "python311",
-            "version": "3.11.15_3"
+            "name": "python312",
+            "version": "3.12.13_3"
           },
           {
             "name": "readline",
