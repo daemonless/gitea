@@ -18,16 +18,13 @@ Lightweight self-hosted Git service — a community managed fork of Gogs written
 | **Website** | [https://about.gitea.com/](https://about.gitea.com/) |
 
 ## Version Tags
-
 | Tag | Description | Best For |
 | :--- | :--- | :--- |
 | `latest` | **Upstream Binary**. Built from official release. | Most users. Matches Linux Docker behavior. |
-| `latest-latest` | **FreeBSD Latest**. Rolling package updates. | Newest FreeBSD packages. |
 | `pkg` | **FreeBSD Quarterly**. Uses stable, tested packages. | Production stability. |
 | `pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Newest FreeBSD packages. |
 
 ## Prerequisites
-
 Before deploying, ensure your host environment is ready. See the [Quick Start Guide](https://daemonless.io/guides/quick-start) for host setup instructions.
 
 ## Deployment
@@ -54,10 +51,11 @@ services:
 ```
 
 ### AppJail Director
-
 **.env**:
 
 ```
+# .env
+
 DIRECTOR_PROJECT=gitea
 PUID=1000
 PGID=1000
@@ -69,6 +67,8 @@ SSH_LISTEN_PORT=22
 **appjail-director.yml**:
 
 ```yaml
+# appjail-director.yml
+
 options:
   - virtualnet: ':<random> default'
   - nat:
@@ -77,8 +77,8 @@ services:
     name: gitea
     options:
       - container: 'boot args:--pull'
-      - expose="3000:3000 proto:tcp" \
-      - expose="2222:22 proto:tcp" \
+      - expose: '3000:3000 proto:tcp' \
+      - expose: '2222:22 proto:tcp' \
     oci:
       user: root
       environment:
@@ -97,6 +97,8 @@ volumes:
 **Makejail**:
 
 ```
+# Makejail
+
 ARG tag=latest
 
 OPTION overwrite=force
