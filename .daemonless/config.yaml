@@ -11,13 +11,9 @@ build:
     - tag: latest
       containerfile: Containerfile
       default: true
-    - tag: latest-latest
-      containerfile: Containerfile
-      args:
-        BASE_VERSION: "15-latest"
     - tag: pkg
       containerfile: Containerfile.pkg
     - tag: pkg-latest
       containerfile: Containerfile.pkg
       args:
-        BASE_VERSION: "15-latest"
+        BASE_VERSION: "15.1-latest"
