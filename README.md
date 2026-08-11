@@ -20,9 +20,9 @@ Lightweight self-hosted Git service — a community managed fork of Gogs written
 ## Version Tags
 | Tag | Description | Best For |
 | :--- | :--- | :--- |
-| `latest` | **Upstream Binary**. Built from official release. | Most users. Matches Linux Docker behavior. |
+| `latest` | **Upstream Binary**. Built from official release. | Most users — recommended. |
 | `pkg` | **FreeBSD Quarterly**. Uses stable, tested packages. | Production stability. |
-| `pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Newest FreeBSD packages. |
+| `pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Staying current. |
 
 ## Prerequisites
 Before deploying, ensure your host environment is ready. See the [Quick Start Guide](https://daemonless.io/guides/quick-start) for host setup instructions.
@@ -77,8 +77,8 @@ services:
     name: gitea
     options:
       - container: 'boot args:--pull'
-      - expose: '3000:3000 proto:tcp' \
-      - expose: '2222:22 proto:tcp' \
+      - expose: '3000:3000 proto:tcp'
+      - expose: '2222:22 proto:tcp'
     oci:
       user: root
       environment:
