@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-16T23:50:52Z",
+  "generated": "2026-08-17T17:52:30Z",
   "image": "gitea",
   "tags": {
     "latest": {
       "app_version": "1.27.2",
       "arch": "amd64",
-      "generated": "2026-08-16T23:48:45Z",
+      "generated": "2026-08-17T17:51:24Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -302,7 +302,7 @@
               "MIT"
             ],
             "name": "git-lfs",
-            "version": "3.6.1_19"
+            "version": "3.6.1_20"
           },
           {
             "licenses": [
@@ -445,7 +445,7 @@
               "MPL20"
             ],
             "name": "p5-Mozilla-CA",
-            "version": "20250602"
+            "version": "20260813"
           },
           {
             "licenses": [
@@ -1865,7 +1865,7 @@
           {
             "name": "stdlib",
             "purl": "",
-            "version": "v1.25.12"
+            "version": "v1.25.13"
           },
           {
             "name": "strk.kbt.io/projects/go/libravatar",
@@ -1962,9 +1962,9 @@
       }
     },
     "pkg": {
-      "app_version": "1.26.4_1",
+      "app_version": "1.26.4_2",
       "arch": "amd64",
-      "generated": "2026-08-16T23:48:47Z",
+      "generated": "2026-08-17T07:54:48Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -2247,14 +2247,14 @@
               "MIT"
             ],
             "name": "git-lfs",
-            "version": "3.6.1_19"
+            "version": "3.6.1_20"
           },
           {
             "licenses": [
               "MIT"
             ],
             "name": "gitea",
-            "version": "1.26.4_1"
+            "version": "1.26.4_2"
           },
           {
             "licenses": [
@@ -2397,7 +2397,7 @@
               "MPL20"
             ],
             "name": "p5-Mozilla-CA",
-            "version": "20250602"
+            "version": "20260813"
           },
           {
             "licenses": [
@@ -3842,7 +3842,7 @@
           {
             "name": "stdlib",
             "purl": "",
-            "version": "v1.25.12"
+            "version": "v1.25.13"
           },
           {
             "name": "strk.kbt.io/projects/go/libravatar",
@@ -3941,7 +3941,7 @@
     "pkg-latest": {
       "app_version": "1.26.4_1",
       "arch": "amd64",
-      "generated": "2026-08-16T23:50:01Z",
+      "generated": "2026-08-17T07:54:11Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
