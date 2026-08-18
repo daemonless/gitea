@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-17T17:52:30Z",
+  "generated": "2026-08-18T07:48:03Z",
   "image": "gitea",
   "tags": {
     "latest": {
       "app_version": "1.27.2",
       "arch": "amd64",
-      "generated": "2026-08-17T17:51:24Z",
+      "generated": "2026-08-18T07:42:41Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1964,7 +1964,7 @@
     "pkg": {
       "app_version": "1.26.4_2",
       "arch": "amd64",
-      "generated": "2026-08-17T07:54:48Z",
+      "generated": "2026-08-18T07:42:11Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -3939,9 +3939,9 @@
       }
     },
     "pkg-latest": {
-      "app_version": "1.26.4_1",
+      "app_version": "1.26.4_2",
       "arch": "amd64",
-      "generated": "2026-08-17T07:54:11Z",
+      "generated": "2026-08-18T07:41:55Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -4224,14 +4224,14 @@
               "MIT"
             ],
             "name": "git-lfs",
-            "version": "3.6.1_19"
+            "version": "3.6.1_20"
           },
           {
             "licenses": [
               "MIT"
             ],
             "name": "gitea",
-            "version": "1.26.4_1"
+            "version": "1.26.4_2"
           },
           {
             "licenses": [
@@ -4374,7 +4374,7 @@
               "MPL20"
             ],
             "name": "p5-Mozilla-CA",
-            "version": "20250602"
+            "version": "20260813"
           },
           {
             "licenses": [
@@ -4418,7 +4418,7 @@
               "PSFL"
             ],
             "name": "python312",
-            "version": "3.12.13_4"
+            "version": "3.12.14"
           },
           {
             "licenses": [
@@ -5819,7 +5819,7 @@
           {
             "name": "stdlib",
             "purl": "",
-            "version": "v1.26.5"
+            "version": "v1.26.6"
           },
           {
             "name": "strk.kbt.io/projects/go/libravatar",
