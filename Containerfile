@@ -13,7 +13,7 @@ ARG BINARY_JQ=".assets[] | select(.name | test(\"^gitea-.*-freebsd14-amd64$\")) 
 FROM ghcr.io/daemonless/base:${BASE_VERSION}
 
 ARG FREEBSD_ARCH=amd64
-ARG PACKAGES="FreeBSD-ssh devel/git-lfs shells/bash"
+ARG PACKAGES="FreeBSD-ssh FreeBSD-pam devel/git-lfs shells/bash"
 ARG HEALTHCHECK_ENDPOINT="http://localhost:3000/api/healthz"
 
 ENV HEALTHCHECK_URL="${HEALTHCHECK_ENDPOINT}"
