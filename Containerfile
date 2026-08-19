@@ -69,7 +69,7 @@ RUN fetch -qo /tmp/latest.json "${UPSTREAM_URL}" && \
 COPY root/ /
 
 # Make scripts executable
-RUN chmod +x /etc/services.d/*/run /etc/cont-init.d/* 2>/dev/null || true
+RUN chmod +x /etc/services.d/*/run /etc/services.d/*/finish /etc/cont-init.d/* 2>/dev/null || true
 
 # --- Expose (Injected by Generator) ---
 EXPOSE 3000 22

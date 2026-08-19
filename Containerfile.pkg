@@ -8,7 +8,7 @@ ARG BASE_VERSION=15.1
 FROM ghcr.io/daemonless/base:${BASE_VERSION}
 
 ARG FREEBSD_ARCH=amd64
-ARG PACKAGES="gitea"
+ARG PACKAGES="FreeBSD-ssh devel/git-lfs shells/bash gitea"
 ARG UPSTREAM_URL="https://api.github.com/repos/go-gitea/gitea/releases/latest"
 ARG UPSTREAM_JQ=".tag_name"
 ARG HEALTHCHECK_ENDPOINT="http://localhost:3000/api/healthz"
@@ -53,10 +53,10 @@ RUN mkdir -p /config/data /config/custom/conf /config/repos /config/log /config/
 COPY root/ /
 
 # Make scripts executable
-RUN chmod +x /etc/services.d/gitea/run /etc/cont-init.d/* 2>/dev/null || true
+RUN chmod +x /etc/services.d/*/run /etc/services.d/*/finish /etc/cont-init.d/* 2>/dev/null || true
 
 # --- Expose (Injected by Generator) ---
-EXPOSE 3000 2222
+EXPOSE 3000 22
 
 # --- Volumes (Injected by Generator) ---
 VOLUME /config
