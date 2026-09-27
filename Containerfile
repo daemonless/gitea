@@ -13,6 +13,8 @@ ARG BINARY_JQ=".assets[] | select(.name | test(\"^gitea-.*-freebsd14-amd64$\")) 
 FROM ghcr.io/daemonless/base:${BASE_VERSION}
 
 ARG FREEBSD_ARCH=amd64
+ARG UPSTREAM_URL
+ARG UPSTREAM_JQ
 ARG PACKAGES="FreeBSD-ssh FreeBSD-pam devel/git-lfs shells/bash"
 ARG HEALTHCHECK_ENDPOINT="http://localhost:3000/api/healthz"
 
@@ -31,6 +33,7 @@ LABEL org.opencontainers.image.title="Gitea" \
       io.daemonless.volumes="/config" \
       io.daemonless.arch="${FREEBSD_ARCH}" \
       io.daemonless.upstream-url="${UPSTREAM_URL}" \
+      io.daemonless.upstream-jq="${UPSTREAM_JQ}" \
       io.daemonless.healthcheck-url="${HEALTHCHECK_ENDPOINT}"
 
 # Update to latest patch level
@@ -50,8 +53,6 @@ RUN pkg update && \
 RUN mkdir -m 0755 -p /app /config/bin /config/data /config/custom/conf /config/repos /config/log /config/lfs /config/tmp && \
     chown -R bsd:bsd /app /config
 
-ARG UPSTREAM_URL
-ARG UPSTREAM_JQ
 ARG BINARY_JQ
 
 # Download Gitea binary from GitHub Releases
