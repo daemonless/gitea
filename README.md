@@ -7,6 +7,7 @@ Source: dbuild templates
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/daemonless/gitea/build.yaml?style=flat-square&label=Build&color=green)](https://github.com/daemonless/gitea/actions)
 [![Last Commit](https://img.shields.io/github/last-commit/daemonless/gitea?style=flat-square&label=Last+Commit&color=blue)](https://github.com/daemonless/gitea/commits)
+[![OCI Pulls](https://img.shields.io/docker/pulls/daemonless/gitea?style=flat-square&label=OCI+Pulls&color=blue)](https://hub.docker.com/r/daemonless/gitea)
 
 Lightweight self-hosted Git service — a community managed fork of Gogs written in Go.
 
@@ -51,6 +52,8 @@ services:
     restart: always
 ```
 
+Save as `compose.yaml`, then run `podman-compose up -d`.
+
 ### AppJail Director
 **.env**:
 
@@ -77,7 +80,7 @@ services:
   gitea:
     name: gitea
     options:
-      - container: 'boot args:--pull'
+      - container: 'args:--pull'
       - expose: '3000:3000 proto:tcp'
       - expose: '2222:22 proto:tcp'
     oci:
@@ -102,10 +105,18 @@ volumes:
 
 ARG tag=latest
 
+OPTION container=boot
 OPTION overwrite=force
 OPTION from=ghcr.io/daemonless/gitea:${tag}
 ```
-**Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
+
+Save the files above, then run `appjail-director up`.
+
+
+> [!WARNING]
+> Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the jail's IPv4 address or hostname assigned by the virtual network.
+>
+> To avoid exposing ports, just remove the `expose` option in your `appjail-director.yml` or from your command-line arguments.
 
 ### Podman CLI
 
@@ -122,7 +133,10 @@ podman run -d --name gitea \
   ghcr.io/daemonless/gitea:latest
 ```
 
+Save as `run.sh`, then run `sh run.sh`.
+
 ### AppJail
+
 
 ```bash
 appjail oci run -Pd \
@@ -140,7 +154,49 @@ appjail oci run -Pd \
   -o fstab="/path/to/containers/gitea /config <pseudofs>" \
   ghcr.io/daemonless/gitea:latest gitea
 ```
-**Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
+
+Save the files above, then run `sh run.sh`.
+
+
+> [!WARNING]
+> Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the jail's IPv4 address or hostname assigned by the virtual network.
+>
+> To avoid exposing ports, just remove the `expose` option in your `appjail-director.yml` or from your command-line arguments.
+
+### Bastille
+
+> [!WARNING]
+> Bastille's OCI support is **experimental**. It requires `buildah` and shares the host network stack (`inherit`). Mount volumes with `--volume HOST JAIL`; without it, image-declared volumes are stored under `${bastille_volumesdir}/${jail}`.
+
+```yaml
+services:
+  gitea:
+    name: gitea
+    image: "ghcr.io/daemonless/gitea:latest"
+    network:
+      - mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - SSH_PORT=2222
+      - SSH_LISTEN_PORT=22
+    volumes:
+      - "/path/to/containers/gitea:/config"
+```
+
+Save as `bastille-compose.yml`, then run `bastille up`. Or via CLI:
+
+```bash
+bastille create -O \
+  --env PUID=1000 \
+  --env PGID=1000 \
+  --env TZ=UTC \
+  --env SSH_PORT=2222 \
+  --env SSH_LISTEN_PORT=22 \
+  --volume /path/to/containers/gitea /config \
+  gitea ghcr.io/daemonless/gitea:latest inherit
+```
 
 ### Ansible
 
@@ -163,6 +219,8 @@ appjail oci run -Pd \
     volumes:
       - "/path/to/containers/gitea:/config"
 ```
+
+Save as `gitea-deploy.yaml`, then run `ansible-playbook gitea-deploy.yaml`.
 
 Access at: `http://localhost:3000`
 
