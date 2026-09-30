@@ -44,7 +44,7 @@ services:
       - SSH_PORT=2222  # Published port for sshd (used in clone URLs)
       - SSH_LISTEN_PORT=22  # Port on which sshd listens inside the container
     volumes:
-      - "/path/to/containers/gitea:/config"
+      - "/containers/gitea:/config"
     ports:
       - "3000:3000"
       - "2222:22"
@@ -95,7 +95,7 @@ services:
       - gitea: /config
 volumes:
   gitea:
-    device: '/path/to/containers/gitea'
+    device: '/containers/gitea'
 ```
 
 **Makejail**:
@@ -129,7 +129,7 @@ podman run -d --name gitea \
   -e TZ=UTC \
   -e SSH_PORT=2222 \
   -e SSH_LISTEN_PORT=22 \
-  -v /path/to/containers/gitea:/config \
+  -v /containers/gitea:/config \
   ghcr.io/daemonless/gitea:latest
 ```
 
@@ -151,7 +151,7 @@ appjail oci run -Pd \
   -e TZ=UTC \
   -e SSH_PORT=2222 \
   -e SSH_LISTEN_PORT=22 \
-  -o fstab="/path/to/containers/gitea /config <pseudofs>" \
+  -o fstab="/containers/gitea /config <pseudofs>" \
   ghcr.io/daemonless/gitea:latest gitea
 ```
 
@@ -182,7 +182,7 @@ services:
       - SSH_PORT=2222
       - SSH_LISTEN_PORT=22
     volumes:
-      - "/path/to/containers/gitea:/config"
+      - "/containers/gitea:/config"
 ```
 
 Save as `bastille-compose.yml`, then run `bastille up`. Or via CLI:
@@ -194,7 +194,7 @@ bastille create -O \
   --env TZ=UTC \
   --env SSH_PORT=2222 \
   --env SSH_LISTEN_PORT=22 \
-  --volume /path/to/containers/gitea /config \
+  --volume /containers/gitea /config \
   gitea ghcr.io/daemonless/gitea:latest inherit
 ```
 
@@ -217,7 +217,7 @@ bastille create -O \
       - "3000:3000"
       - "2222:22"
     volumes:
-      - "/path/to/containers/gitea:/config"
+      - "/containers/gitea:/config"
 ```
 
 Save as `gitea-deploy.yaml`, then run `ansible-playbook gitea-deploy.yaml`.
