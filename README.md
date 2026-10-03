@@ -32,29 +32,224 @@ Before deploying, ensure your host environment is ready. See the [Quick Start Gu
 
 ### Podman Compose
 
-```yaml
+**Database.** Where the app keeps its data. The default needs nothing else running.
+
+#### SQLite (default)
+
+A file in the app's config folder. Right for one person, nothing extra to run.
+
+**1.** Save as `.env` and fill in what is empty:
+
+```env { data-zip-bundle="gitea-podman" data-zip-filename=".env" }
+
+```
+
+**2.** Save as `compose.yaml`:
+
+```yaml { data-zip-bundle="gitea-podman" data-zip-filename="compose.yaml" }
+name: gitea
+
 services:
   gitea:
-    image: "ghcr.io/daemonless/gitea:latest"
+    image: ghcr.io/daemonless/gitea:latest
     container_name: gitea
+    restart: unless-stopped
+
     environment:
-      - PUID=1000  # User ID for the application process
-      - PGID=1000  # Group ID for the application process
-      - TZ=UTC  # Timezone for the container
-      - SSH_PORT=2222  # Published port for sshd (used in clone URLs)
-      - SSH_LISTEN_PORT=22  # Port on which sshd listens inside the container
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - SSH_PORT=2222
+      - SSH_LISTEN_PORT=22
+      - GITEA__database__DB_TYPE=${GITEA__database__DB_TYPE:-}
+      - GITEA__database__HOST=${GITEA__database__HOST:-}
+      - GITEA__database__USER=${GITEA__database__USER:-}
+      - GITEA__database__PASSWD=${GITEA__database__PASSWD:-}
+      - GITEA__database__NAME=${GITEA__database__NAME:-}
+
     volumes:
-      - "/containers/gitea:/config"
+      - /path/to/containers/gitea:/config
+
     ports:
       - "3000:3000"
       - "2222:22"
-    # always (not unless-stopped) so FreeBSD's podman rc.d auto-starts it at boot
-    restart: always
 ```
 
-Save as `compose.yaml`, then run `podman-compose up -d`.
+Then run `podman-compose up -d`.
+
+#### PostgreSQL
+
+One more container, its data in its own folder. For a household, or an app that wants it.
+
+**1.** Save as `.env` and fill in what is empty:
+
+```env { data-zip-bundle="gitea-podman-database-postgres" data-zip-filename=".env" }
+# Database: PostgreSQL
+GITEA__database__DB_TYPE=postgres
+GITEA__database__HOST=postgres
+GITEA__database__USER=gitea
+GITEA__database__PASSWD=  # set one
+GITEA__database__NAME=gitea
+DATABASE_LOCATION=/containers/gitea/postgres
+```
+
+**2.** Save as `compose.yaml`:
+
+```yaml { data-zip-bundle="gitea-podman-database-postgres" data-zip-filename="compose.yaml" }
+name: gitea
+
+services:
+  gitea:
+    depends_on: [postgres]
+    image: ghcr.io/daemonless/gitea:latest
+    container_name: gitea
+    restart: unless-stopped
+
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - SSH_PORT=2222
+      - SSH_LISTEN_PORT=22
+      - GITEA__database__DB_TYPE=${GITEA__database__DB_TYPE:-}
+      - GITEA__database__HOST=${GITEA__database__HOST:-}
+      - GITEA__database__USER=${GITEA__database__USER:-}
+      - GITEA__database__PASSWD=${GITEA__database__PASSWD:-}
+      - GITEA__database__NAME=${GITEA__database__NAME:-}
+
+    volumes:
+      - /path/to/containers/gitea:/config
+
+    ports:
+      - "3000:3000"
+      - "2222:22"
+  postgres:
+    image: ghcr.io/daemonless/postgres:17
+    restart: always
+    annotations:
+      org.freebsd.jail.allow.sysvipc: "true"
+    environment:
+      - POSTGRES_USER=${GITEA__database__USER}
+      - POSTGRES_PASSWORD=${GITEA__database__PASSWD}
+      - POSTGRES_DB=${GITEA__database__NAME}
+    volumes:
+      - "${DATABASE_LOCATION}:/var/lib/postgresql/data"
+```
+
+Then run `podman-compose up -d`.
+
+#### MariaDB
+
+One more container, its data in its own folder. If you already know MariaDB, or the app prefers it.
+
+**1.** Save as `.env` and fill in what is empty:
+
+```env { data-zip-bundle="gitea-podman-database-mariadb" data-zip-filename=".env" }
+# Database: MariaDB
+GITEA__database__DB_TYPE=mysql
+GITEA__database__HOST=mariadb
+GITEA__database__USER=gitea
+GITEA__database__PASSWD=  # set one
+GITEA__database__NAME=gitea
+DATABASE_LOCATION=/containers/gitea/mariadb
+```
+
+**2.** Save as `compose.yaml`:
+
+```yaml { data-zip-bundle="gitea-podman-database-mariadb" data-zip-filename="compose.yaml" }
+name: gitea
+
+services:
+  gitea:
+    depends_on: [mariadb]
+    image: ghcr.io/daemonless/gitea:latest
+    container_name: gitea
+    restart: unless-stopped
+
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - SSH_PORT=2222
+      - SSH_LISTEN_PORT=22
+      - GITEA__database__DB_TYPE=${GITEA__database__DB_TYPE:-}
+      - GITEA__database__HOST=${GITEA__database__HOST:-}
+      - GITEA__database__USER=${GITEA__database__USER:-}
+      - GITEA__database__PASSWD=${GITEA__database__PASSWD:-}
+      - GITEA__database__NAME=${GITEA__database__NAME:-}
+
+    volumes:
+      - /path/to/containers/gitea:/config
+
+    ports:
+      - "3000:3000"
+      - "2222:22"
+  mariadb:
+    image: ghcr.io/daemonless/mariadb:11.4
+    restart: always
+    environment:
+      - MYSQL_USER=${GITEA__database__USER}
+      - MYSQL_PASSWORD=${GITEA__database__PASSWD}
+      - MYSQL_DATABASE=${GITEA__database__NAME}
+      - MYSQL_ROOT_PASSWORD=${GITEA__database__PASSWD}
+    volumes:
+      - "${DATABASE_LOCATION}:/config"
+```
+
+Then run `podman-compose up -d`.
+
+#### Your own
+
+A database you already run, here or on another machine. Nothing extra runs; you give the address and the account.
+
+**1.** Save as `.env` and fill in Kind, Host, User, Password, Database:
+
+```env { data-zip-bundle="gitea-podman-database-external" data-zip-filename=".env" }
+# Database: Your own
+GITEA__database__DB_TYPE=  # Kind: postgres | mysql
+GITEA__database__HOST=  # Host
+GITEA__database__USER=  # User
+GITEA__database__PASSWD=  # Password
+GITEA__database__NAME=  # Database
+```
+
+**2.** Save as `compose.yaml`:
+
+```yaml { data-zip-bundle="gitea-podman-database-external" data-zip-filename="compose.yaml" }
+name: gitea
+
+services:
+  gitea:
+    image: ghcr.io/daemonless/gitea:latest
+    container_name: gitea
+    restart: unless-stopped
+
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - SSH_PORT=2222
+      - SSH_LISTEN_PORT=22
+      - GITEA__database__DB_TYPE=${GITEA__database__DB_TYPE:-}
+      - GITEA__database__HOST=${GITEA__database__HOST:-}
+      - GITEA__database__USER=${GITEA__database__USER:-}
+      - GITEA__database__PASSWD=${GITEA__database__PASSWD:-}
+      - GITEA__database__NAME=${GITEA__database__NAME:-}
+
+    volumes:
+      - /path/to/containers/gitea:/config
+
+    ports:
+      - "3000:3000"
+      - "2222:22"
+```
+
+Then run `podman-compose up -d`.
 
 ### AppJail Director
+
+#### SQLite (default)
+
 **.env**:
 
 ```
@@ -66,6 +261,11 @@ PGID=1000
 TZ=UTC
 SSH_PORT=2222
 SSH_LISTEN_PORT=22
+GITEA__database__DB_TYPE=sqlite3
+GITEA__database__HOST=
+GITEA__database__USER=
+GITEA__database__PASSWD=<GITEA__DATABASE__PASSWD>
+GITEA__database__NAME=
 ```
 
 **appjail-director.yml**:
@@ -91,6 +291,11 @@ services:
         - TZ: !ENV '${TZ}'
         - SSH_PORT: !ENV '${SSH_PORT}'
         - SSH_LISTEN_PORT: !ENV '${SSH_LISTEN_PORT}'
+        - GITEA__database__DB_TYPE: !ENV '${GITEA__database__DB_TYPE}'
+        - GITEA__database__HOST: !ENV '${GITEA__database__HOST}'
+        - GITEA__database__USER: !ENV '${GITEA__database__USER}'
+        - GITEA__database__PASSWD: !ENV '${GITEA__database__PASSWD}'
+        - GITEA__database__NAME: !ENV '${GITEA__database__NAME}'
     volumes:
       - gitea: /config
 volumes:
@@ -112,115 +317,263 @@ OPTION from=ghcr.io/daemonless/gitea:${tag}
 
 Save the files above, then run `appjail-director up`.
 
+#### PostgreSQL
 
-> [!WARNING]
-> Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the jail's IPv4 address or hostname assigned by the virtual network.
->
-> To avoid exposing ports, just remove the `expose` option in your `appjail-director.yml` or from your command-line arguments.
+**.env**:
 
-### Podman CLI
+```
+# .env
 
-```bash
-podman run -d --name gitea \
-  -p 3000:3000 \
-  -p 2222:22 \
-  -e PUID=1000 \
-  -e PGID=1000 \
-  -e TZ=UTC \
-  -e SSH_PORT=2222 \
-  -e SSH_LISTEN_PORT=22 \
-  -v /containers/gitea:/config \
-  ghcr.io/daemonless/gitea:latest
+DIRECTOR_PROJECT=gitea
+PUID=1000
+PGID=1000
+TZ=UTC
+SSH_PORT=2222
+SSH_LISTEN_PORT=22
+GITEA__database__DB_TYPE=postgres
+GITEA__database__HOST=gitea_postgres
+GITEA__database__USER=gitea
+GITEA__database__PASSWD=
+GITEA__database__NAME=gitea
+DATABASE_LOCATION=/containers/gitea/postgres
 ```
 
-Save as `run.sh`, then run `sh run.sh`.
-
-### AppJail
-
-
-```bash
-appjail oci run -Pd \
-  -o overwrite=force \
-  -o container="args:--pull" \
-  -o virtualnet=":<random> default" \
-  -o nat \
-  -o expose="3000:3000 proto:tcp" \
-  -o expose="2222:22 proto:tcp" \
-  -e PUID=1000 \
-  -e PGID=1000 \
-  -e TZ=UTC \
-  -e SSH_PORT=2222 \
-  -e SSH_LISTEN_PORT=22 \
-  -o fstab="/containers/gitea /config <pseudofs>" \
-  ghcr.io/daemonless/gitea:latest gitea
-```
-
-Save the files above, then run `sh run.sh`.
-
-
-> [!WARNING]
-> Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the jail's IPv4 address or hostname assigned by the virtual network.
->
-> To avoid exposing ports, just remove the `expose` option in your `appjail-director.yml` or from your command-line arguments.
-
-### Bastille
-
-> [!WARNING]
-> Bastille's OCI support is **experimental**. It requires `buildah` and shares the host network stack (`inherit`). Mount volumes with `--volume HOST JAIL`; without it, image-declared volumes are stored under `${bastille_volumesdir}/${jail}`.
+**appjail-director.yml**:
 
 ```yaml
+# appjail-director.yml
+
+options:
+  - virtualnet: ':<random> default'
+  - nat:
 services:
   gitea:
     name: gitea
-    image: "ghcr.io/daemonless/gitea:latest"
-    network:
-      - mode: host
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=UTC
-      - SSH_PORT=2222
-      - SSH_LISTEN_PORT=22
+    options:
+      - container: 'args:--pull'
+      - expose: '3000:3000 proto:tcp'
+      - expose: '2222:22 proto:tcp'
+    oci:
+      user: root
+      environment:
+        - PUID: !ENV '${PUID}'
+        - PGID: !ENV '${PGID}'
+        - TZ: !ENV '${TZ}'
+        - SSH_PORT: !ENV '${SSH_PORT}'
+        - SSH_LISTEN_PORT: !ENV '${SSH_LISTEN_PORT}'
+        - GITEA__database__DB_TYPE: !ENV '${GITEA__database__DB_TYPE}'
+        - GITEA__database__HOST: !ENV '${GITEA__database__HOST}'
+        - GITEA__database__USER: !ENV '${GITEA__database__USER}'
+        - GITEA__database__PASSWD: !ENV '${GITEA__database__PASSWD}'
+        - GITEA__database__NAME: !ENV '${GITEA__database__NAME}'
     volumes:
-      - "/containers/gitea:/config"
+      - gitea: /config
+  gitea-postgres:
+    name: gitea_postgres
+    priority: 10
+    options:
+      - from: ghcr.io/daemonless/postgres:17
+      - template: !ENV '${PWD}/postgres-template.conf'
+    oci:
+      environment:
+        - POSTGRES_USER: !ENV '${GITEA__database__USER}'
+        - POSTGRES_PASSWORD: !ENV '${GITEA__database__PASSWD}'
+        - POSTGRES_DB: !ENV '${GITEA__database__NAME}'
+    volumes:
+      - database: /var/lib/postgresql/data
+volumes:
+  gitea:
+    device: '/containers/gitea'
+  database:
+    device: !ENV '${DATABASE_LOCATION}'
 ```
 
-Save as `bastille-compose.yml`, then run `bastille up`. Or via CLI:
+**Makejail**:
 
-```bash
-bastille create -O \
-  --env PUID=1000 \
-  --env PGID=1000 \
-  --env TZ=UTC \
-  --env SSH_PORT=2222 \
-  --env SSH_LISTEN_PORT=22 \
-  --volume /containers/gitea /config \
-  gitea ghcr.io/daemonless/gitea:latest inherit
+```
+# Makejail
+
+ARG tag=latest
+
+OPTION container=boot
+OPTION overwrite=force
+OPTION from=ghcr.io/daemonless/gitea:${tag}
 ```
 
-### Ansible
+**postgres-template.conf**:
+
+```
+# The jail PostgreSQL runs in: SysV shared memory, which a jail does not
+# get by default. ip4/ip6 are set here because the director's ip4_inherit
+# option is a no-op in AppJail 5.5.0.
+
+exec.start: "/bin/sh /etc/rc"
+exec.stop: "/bin/sh /etc/rc.shutdown jail"
+sysvmsg: new
+sysvsem: new
+sysvshm: new
+mount.devfs
+persist
+ip4: inherit
+ip6: inherit
+```
+
+Save the files above, then run `appjail-director up`.
+
+#### MariaDB
+
+**.env**:
+
+```
+# .env
+
+DIRECTOR_PROJECT=gitea
+PUID=1000
+PGID=1000
+TZ=UTC
+SSH_PORT=2222
+SSH_LISTEN_PORT=22
+GITEA__database__DB_TYPE=mysql
+GITEA__database__HOST=gitea_mariadb
+GITEA__database__USER=gitea
+GITEA__database__PASSWD=
+GITEA__database__NAME=gitea
+DATABASE_LOCATION=/containers/gitea/mariadb
+```
+
+**appjail-director.yml**:
 
 ```yaml
-- name: Deploy gitea
-  containers.podman.podman_container:
+# appjail-director.yml
+
+options:
+  - virtualnet: ':<random> default'
+  - nat:
+services:
+  gitea:
     name: gitea
-    image: "ghcr.io/daemonless/gitea:latest"
-    state: started
-    restart_policy: always
-    env:
-      PUID: "1000"
-      PGID: "1000"
-      TZ: "UTC"
-      SSH_PORT: "2222"
-      SSH_LISTEN_PORT: "22"
-    ports:
-      - "3000:3000"
-      - "2222:22"
+    options:
+      - container: 'args:--pull'
+      - expose: '3000:3000 proto:tcp'
+      - expose: '2222:22 proto:tcp'
+    oci:
+      user: root
+      environment:
+        - PUID: !ENV '${PUID}'
+        - PGID: !ENV '${PGID}'
+        - TZ: !ENV '${TZ}'
+        - SSH_PORT: !ENV '${SSH_PORT}'
+        - SSH_LISTEN_PORT: !ENV '${SSH_LISTEN_PORT}'
+        - GITEA__database__DB_TYPE: !ENV '${GITEA__database__DB_TYPE}'
+        - GITEA__database__HOST: !ENV '${GITEA__database__HOST}'
+        - GITEA__database__USER: !ENV '${GITEA__database__USER}'
+        - GITEA__database__PASSWD: !ENV '${GITEA__database__PASSWD}'
+        - GITEA__database__NAME: !ENV '${GITEA__database__NAME}'
     volumes:
-      - "/containers/gitea:/config"
+      - gitea: /config
+  gitea-mariadb:
+    name: gitea_mariadb
+    priority: 10
+    options:
+      - from: ghcr.io/daemonless/mariadb:11.4
+      - template: !ENV '${PWD}/template.conf'
+    oci:
+      environment:
+        - MYSQL_USER: !ENV '${GITEA__database__USER}'
+        - MYSQL_PASSWORD: !ENV '${GITEA__database__PASSWD}'
+        - MYSQL_DATABASE: !ENV '${GITEA__database__NAME}'
+        - MYSQL_ROOT_PASSWORD: !ENV '${GITEA__database__PASSWD}'
+    volumes:
+      - database: /config
+volumes:
+  gitea:
+    device: '/containers/gitea'
+  database:
+    device: !ENV '${DATABASE_LOCATION}'
 ```
 
-Save as `gitea-deploy.yaml`, then run `ansible-playbook gitea-deploy.yaml`.
+**Makejail**:
+
+```
+# Makejail
+
+ARG tag=latest
+
+OPTION container=boot
+OPTION overwrite=force
+OPTION from=ghcr.io/daemonless/gitea:${tag}
+```
+
+Save the files above, then run `appjail-director up`.
+
+#### Your own
+
+**.env**:
+
+```
+# .env
+
+DIRECTOR_PROJECT=gitea
+PUID=1000
+PGID=1000
+TZ=UTC
+SSH_PORT=2222
+SSH_LISTEN_PORT=22
+GITEA__database__DB_TYPE=
+GITEA__database__HOST=
+GITEA__database__USER=
+GITEA__database__PASSWD=
+GITEA__database__NAME=
+```
+
+**appjail-director.yml**:
+
+```yaml
+# appjail-director.yml
+
+options:
+  - virtualnet: ':<random> default'
+  - nat:
+services:
+  gitea:
+    name: gitea
+    options:
+      - container: 'args:--pull'
+      - expose: '3000:3000 proto:tcp'
+      - expose: '2222:22 proto:tcp'
+    oci:
+      user: root
+      environment:
+        - PUID: !ENV '${PUID}'
+        - PGID: !ENV '${PGID}'
+        - TZ: !ENV '${TZ}'
+        - SSH_PORT: !ENV '${SSH_PORT}'
+        - SSH_LISTEN_PORT: !ENV '${SSH_LISTEN_PORT}'
+        - GITEA__database__DB_TYPE: !ENV '${GITEA__database__DB_TYPE}'
+        - GITEA__database__HOST: !ENV '${GITEA__database__HOST}'
+        - GITEA__database__USER: !ENV '${GITEA__database__USER}'
+        - GITEA__database__PASSWD: !ENV '${GITEA__database__PASSWD}'
+        - GITEA__database__NAME: !ENV '${GITEA__database__NAME}'
+    volumes:
+      - gitea: /config
+volumes:
+  gitea:
+    device: '/containers/gitea'
+```
+
+**Makejail**:
+
+```
+# Makejail
+
+ARG tag=latest
+
+OPTION container=boot
+OPTION overwrite=force
+OPTION from=ghcr.io/daemonless/gitea:${tag}
+```
+
+Save the files above, then run `appjail-director up`.
 
 Access at: `http://localhost:3000`
 
@@ -235,6 +588,11 @@ Access at: `http://localhost:3000`
 | `TZ` | `UTC` | Timezone for the container |
 | `SSH_PORT` | `2222` | Published port for sshd (used in clone URLs) |
 | `SSH_LISTEN_PORT` | `22` | Port on which sshd listens inside the container |
+| `GITEA__database__DB_TYPE` | `` | sqlite3, postgres or mysql; set by the Database choice. Any non-empty GITEA__<section>__<KEY> goes into app.ini on start |
+| `GITEA__database__HOST` | `` | Database host, optionally host:port (Database choice) |
+| `GITEA__database__USER` | `` | Database user (Database choice) |
+| `GITEA__database__PASSWD` | `<GITEA__DATABASE__PASSWD>` | Database password (Database choice) |
+| `GITEA__database__NAME` | `` | Database name (Database choice) |
 
 ### Volumes
 
