@@ -13,6 +13,21 @@ x-daemonless:
   upstream_binary: true
   appjail: true
 
+  choices:
+    database:
+      kind: database
+      offers: [sqlite, postgres, mariadb, external]
+      default: sqlite
+      env:
+        type: GITEA__database__DB_TYPE
+        host: GITEA__database__HOST
+        user: GITEA__database__USER
+        password: GITEA__database__PASSWD
+        name: GITEA__database__NAME
+      types:
+        sqlite: sqlite3
+        mariadb: mysql
+
   docs:
     env:
       PUID: "User ID for the application process"
@@ -20,6 +35,11 @@ x-daemonless:
       TZ: "Timezone for the container"
       SSH_PORT: "Published port for sshd (used in clone URLs)"
       SSH_LISTEN_PORT: "Port on which sshd listens inside the container"
+      GITEA__database__DB_TYPE: "sqlite3, postgres or mysql; set by the Database choice. Any non-empty GITEA__<section>__<KEY> goes into app.ini on start"
+      GITEA__database__HOST: "Database host, optionally host:port (Database choice)"
+      GITEA__database__USER: "Database user (Database choice)"
+      GITEA__database__PASSWD: "Database password (Database choice)"
+      GITEA__database__NAME: "Database name (Database choice)"
     volumes:
       /config: "Configuration, repositories, and data directory"
     ports:
@@ -61,6 +81,11 @@ services:
       - TZ=UTC
       - SSH_PORT=2222
       - SSH_LISTEN_PORT=22
+      - GITEA__database__DB_TYPE=${GITEA__database__DB_TYPE:-}
+      - GITEA__database__HOST=${GITEA__database__HOST:-}
+      - GITEA__database__USER=${GITEA__database__USER:-}
+      - GITEA__database__PASSWD=${GITEA__database__PASSWD:-}
+      - GITEA__database__NAME=${GITEA__database__NAME:-}
 
     volumes:
       - /path/to/containers/gitea:/config

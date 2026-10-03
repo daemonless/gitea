@@ -62,3 +62,16 @@ EOF
     chown bsd:bsd /config/custom/conf/app.ini
     echo "Created default app.ini - run initial setup at http://localhost:3000/"
 fi
+
+# GITEA__<section>__<KEY> variables (the database choice, or any setting)
+# go into app.ini on every start, as upstream's Docker image does. As bsd:
+# gitea refuses to run as root. Empty ones are dropped first: the compose
+# lists them all, and an empty DB_TYPE or HOST would overwrite a database
+# set up through the web installer.
+for v in $(env | sed -n 's/^\(GITEA__[A-Za-z0-9_]*\)=$/\1/p'); do
+    unset "$v"
+done
+if env | grep -q '^GITEA__'; then
+    /usr/local/bin/s6-setuidgid bsd /config/bin/gitea config edit-ini --in-place --apply-env \
+        --work-path /config --config /config/custom/conf/app.ini
+fi
