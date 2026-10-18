@@ -368,7 +368,7 @@ services:
         - GITEA__database__NAME: !ENV '${GITEA__database__NAME}'
     volumes:
       - gitea: /config
-  gitea-postgres:
+  postgres:
     name: gitea_postgres
     priority: 10
     options:
@@ -471,7 +471,7 @@ services:
         - GITEA__database__NAME: !ENV '${GITEA__database__NAME}'
     volumes:
       - gitea: /config
-  gitea-mariadb:
+  mariadb:
     name: gitea_mariadb
     priority: 10
     options:
