@@ -5,7 +5,7 @@
 # --------------------------------------------------------------------------
 
 ARG BASE_VERSION=15.1
-FROM ghcr.io/daemonless/base:${BASE_VERSION}
+FROM ghcr.io/daemonless/base-rcd:${BASE_VERSION}
 
 ARG FREEBSD_ARCH=amd64
 ARG PACKAGES="FreeBSD-ssh FreeBSD-pam devel/git-lfs shells/bash gitea"
@@ -51,9 +51,7 @@ RUN mkdir -p /config/data /config/custom/conf /config/repos /config/log /config/
 
 # Copy service definition and init scripts
 COPY root/ /
-
-# Make scripts executable
-RUN chmod +x /etc/services.d/*/run /etc/services.d/*/finish /etc/cont-init.d/* 2>/dev/null || true
+RUN chmod +x /daemonless/libexec/* /daemonless/init.d/*
 
 # --- Expose (Injected by Generator) ---
 EXPOSE 3000 22

@@ -10,7 +10,7 @@ ARG UPSTREAM_URL="https://api.github.com/repos/go-gitea/gitea/releases/latest"
 ARG UPSTREAM_JQ=".tag_name"
 ARG BINARY_JQ=".assets[] | select(.name | test(\"^gitea-.*-freebsd(14)?-amd64$\")) | .browser_download_url"
 
-FROM ghcr.io/daemonless/base:${BASE_VERSION}
+FROM ghcr.io/daemonless/base-rcd:${BASE_VERSION}
 
 ARG FREEBSD_ARCH=amd64
 ARG UPSTREAM_URL
@@ -68,9 +68,7 @@ RUN fetch -qo /tmp/latest.json "${UPSTREAM_URL}" && \
 
 # Copy service definition and init scripts
 COPY root/ /
-
-# Make scripts executable
-RUN chmod +x /etc/services.d/*/run /etc/services.d/*/finish /etc/cont-init.d/* 2>/dev/null || true
+RUN chmod +x /daemonless/libexec/* /daemonless/init.d/*
 
 # --- Expose (Injected by Generator) ---
 EXPOSE 3000 22

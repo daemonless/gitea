@@ -6,7 +6,7 @@ mkdir -p /config/data /config/custom/conf /config/repos /config/log /config/lfs 
 chown -R bsd:bsd /config
 
 # Copy gitea binary to volume (workaround for Podman overlay filesystem setuid issue)
-# s6-setuidgid can't exec binaries from overlay fs when dropping privileges
+# dsu can't exec binaries from overlay fs when dropping privileges
 if [ ! -f /config/bin/gitea ] || [ /usr/local/sbin/gitea -nt /config/bin/gitea ]; then
     echo "Copying gitea binary to volume..."
     cp /usr/local/sbin/gitea /config/bin/gitea
@@ -72,6 +72,6 @@ for v in $(env | sed -n 's/^\(GITEA__[A-Za-z0-9_]*\)=$/\1/p'); do
     unset "$v"
 done
 if env | grep -q '^GITEA__'; then
-    /usr/local/bin/s6-setuidgid bsd /config/bin/gitea config edit-ini --in-place --apply-env \
+    dsu bsd /config/bin/gitea config edit-ini --in-place --apply-env \
         --work-path /config --config /config/custom/conf/app.ini
 fi
