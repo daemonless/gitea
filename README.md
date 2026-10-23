@@ -38,13 +38,7 @@ Before deploying, ensure your host environment is ready. See the [Quick Start Gu
 
 A file in the app's config folder. Right for one person, nothing extra to run.
 
-**1.** Save as `.env` and fill in what is empty:
-
-```env { data-zip-bundle="gitea-podman" data-zip-filename=".env" }
-
-```
-
-**2.** Save as `compose.yaml`:
+Save as `compose.yaml`:
 
 ```yaml { data-zip-bundle="gitea-podman" data-zip-filename="compose.yaml" }
 name: gitea
@@ -574,8 +568,7 @@ OPTION from=ghcr.io/daemonless/gitea:${tag}
 ```
 
 Save the files above, then run `appjail-director up`.
-
-Access at: `http://localhost:3000`
+Open `http://<server>:3000` from another machine (the server's own browser can't use a published port).
 
 ## Parameters
 
