@@ -1,11 +1,11 @@
 {
-  "generated": "2026-11-09T23:26:08Z",
+  "generated": "2026-11-16T10:56:49Z",
   "image": "gitea",
   "tags": {
     "latest": {
-      "app_version": "28.3.0",
+      "app_version": "28.4.0",
       "arch": "amd64",
-      "generated": "2026-11-09T23:25:09Z",
+      "generated": "2026-11-16T10:55:48Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -302,14 +302,14 @@
               "GPLv2"
             ],
             "name": "git",
-            "version": "2.56.0"
+            "version": "2.56.1"
           },
           {
             "licenses": [
               "MIT"
             ],
             "name": "git-lfs",
-            "version": "3.6.1_24"
+            "version": "3.6.1_25"
           },
           {
             "licenses": [
@@ -489,14 +489,14 @@
               "BSD2CLAUSE"
             ],
             "name": "pkg",
-            "version": "2.8.4"
+            "version": "2.9.2"
           },
           {
             "licenses": [
               "PSFL"
             ],
             "name": "python312",
-            "version": "3.12.15"
+            "version": "3.12.16"
           },
           {
             "licenses": [
@@ -558,12 +558,12 @@
           {
             "name": "gitea.com/lunny/levelqueue",
             "purl": "",
-            "version": "v0.4.2-0.20230414023320-3c0159fe0fe4"
+            "version": "v0.5.1"
           },
           {
             "name": "gitea.dev",
             "purl": "",
-            "version": "28.3.0"
+            "version": "28.4.0"
           },
           {
             "name": "gitea.dev/actionslib",
@@ -623,7 +623,7 @@
           {
             "name": "github.com/andybalholm/brotli",
             "purl": "",
-            "version": "v1.2.1"
+            "version": "v1.2.7"
           },
           {
             "name": "github.com/aymerick/douceur",
@@ -1698,7 +1698,7 @@
           {
             "name": "stdlib",
             "purl": "",
-            "version": "v1.26.10"
+            "version": "v1.26.11"
           },
           {
             "name": "xorm.io/builder",
