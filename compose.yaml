@@ -44,7 +44,9 @@ x-daemonless:
       GITEA__database__DB_TYPE: "sqlite3, postgres or mysql; set by the Database choice. Any non-empty GITEA__<section>__<KEY> goes into app.ini on start"
       GITEA__database__HOST: "Database host, optionally host:port (Database choice)"
       GITEA__database__USER: "Database user (Database choice)"
-      GITEA__database__PASSWD: "Database password (Database choice)"
+      GITEA__database__PASSWD:
+        desc: "Database password (Database choice)"
+        type: secret
       GITEA__database__NAME: "Database name (Database choice)"
     volumes:
       /config: "Configuration, repositories, and data directory"
